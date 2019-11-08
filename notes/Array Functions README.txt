@@ -17,14 +17,15 @@ You can find out more about these functions in the manual. Some of them are used
 inside of the custom array functions.
 
 The following is a list of the added functions:
-- array_clear
-- array_add
-- array_insert
-- array_delete
-- array_splice
-- array_find_value
-- array_shuffle
-- array_sort
-- array_copy_simple
-- array_concat
-- arra_filter
+- array_clear				
+- array_add					
+- array_insert				(not done)
+- array_delete				
+- array_splice				(not done)
+- array_find_value			(not done)
+- array_shuffle				(not done)
+- array_sort				(not done)
+- array_copy_simple			
+- array_clone				(not done)
+- array_concat				(not done)
+- array_filter				(not done)
