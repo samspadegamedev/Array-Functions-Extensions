@@ -19,4 +19,4 @@ for (var i = 0; i < _length - _amount; i++) {
 	}
 }
 
-return _array;
+return _new_array;
