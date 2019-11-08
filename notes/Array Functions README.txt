@@ -17,7 +17,8 @@ You can find out more about these functions in the manual. Some of them are used
 inside of the custom array functions.
 
 The following is a list of the added functions:
-- array_clear				
+- array_clear
+- array_swap
 - array_add					
 - array_insert				
 - array_delete				
@@ -29,8 +30,8 @@ The following is a list of the added functions:
 - array_clone				
 - array_concat				
 - array_filter				(not done)
-- array_map					(not done)
-- array_for_each			(not done)
+- array_map					
+- array_for_each			
 - array_flatten				
 - array_reduce				
 - array_reduce_right		

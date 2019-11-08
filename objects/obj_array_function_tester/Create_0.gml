@@ -3,9 +3,11 @@
 
 //add functions to test
 
+var _array = [1, 2, 3, 4, 5];
 
+array_for_each(_array, add_n_test, [-1]);
 	
-var _array = array_flatten([3, 4, 5, [6, 7], [1], [2, [3, 4], 5], 5]);
+
 	
 ///start debug
 print_start("DEBUG");
