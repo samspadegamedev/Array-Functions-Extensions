@@ -4,12 +4,12 @@
     "mvc": "1.1",
     "name": "2981dfa3-3f65-4465-909c-ecc2a6689f09",
     "children": [
-        "60868f68-646a-4c89-b628-3f175b2ab1bc",
+        "6f6c7d6e-30b4-47a0-b6c9-755a295f97fd",
         "5849ada5-81af-401a-a70f-d41585d9df28",
         "044ba9fe-30be-48d9-bc95-6da9b9f14335",
         "674ec47d-379b-4e64-b553-724a84a85095",
         "4c54ba6b-c67e-4ed1-8fb7-ce0bff9c067f",
-        "6f6c7d6e-30b4-47a0-b6c9-755a295f97fd",
+        "93a3126c-5f38-4a75-8c43-a6a216a968f0",
         "bf345267-b89f-456c-b07e-73c08d09ddf0",
         "1fc2f27e-7019-463a-a728-0a918aff1ede",
         "1b82cd5a-0597-4826-8a27-2329d47ea930",
@@ -19,7 +19,10 @@
         "85d83ed5-19d7-4549-b075-40e1379586c1",
         "819a7349-36b9-459b-8ee9-1fd79b21248e",
         "39b00f6a-f6ab-4202-b5c0-e62e80cce35a",
-        "e20d440e-4765-40b9-ad21-215f130dfb6d"
+        "c5ace617-7fa5-4778-b657-fe508c542f74",
+        "e20d440e-4765-40b9-ad21-215f130dfb6d",
+        "cdcbc2db-9150-40be-a70a-fad566ff5330",
+        "3b7fef3e-76b6-436b-b0d9-8f58c012f992"
     ],
     "filterType": "GMScript",
     "folderName": "Array Functions",

@@ -8,8 +8,8 @@
 var _array, _pos_1, _pos_2;
 _array = argument0;
 _pos_1 = argument1;
-_pos_1 = argument2;
+_pos_2 = argument2;
 
 var _temp = _array[_pos_1];
-_array[@ _pos_1] = _array[_pos_1];
+_array[@ _pos_1] = _array[_pos_2];
 _array[@ _pos_2] = _temp;
