@@ -26,9 +26,11 @@ The following is a list of the added functions:
 - array_shuffle				(not done)
 - array_sort				(not done)
 - array_copy_simple			
-- array_clone				(not done)
-- array_concat				(not done)
+- array_clone				
+- array_concat				
 - array_filter				(not done)
-- array_flatten				(not done)
+- array_map					(not done)
+- array_for_each			(not done)
+- array_flatten				
 - array_reduce				
 - array_reduce_right		
