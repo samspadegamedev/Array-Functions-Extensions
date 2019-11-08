@@ -19,13 +19,16 @@ inside of the custom array functions.
 The following is a list of the added functions:
 - array_clear				
 - array_add					
-- array_insert				(not done)
+- array_insert				
 - array_delete				
 - array_splice				(not done)
-- array_find_value			(not done)
+- array_find_value			
 - array_shuffle				(not done)
 - array_sort				(not done)
 - array_copy_simple			
 - array_clone				(not done)
 - array_concat				(not done)
 - array_filter				(not done)
+- array_flatten				(not done)
+- array_reduce				
+- array_reduce_right		
