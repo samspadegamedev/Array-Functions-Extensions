@@ -25,12 +25,12 @@ The following is a list of the added functions:
 - array_find_value			
 - array_shuffle			
 - array_sort				
-- array_copy_simple			
-- array_clone				
-- array_concat				
+- array_copy_shallow			
+- array_copy_deep				
+- array_combine				
 - array_filter				
 - array_map					
 - array_for_each			
 - array_flatten				
-- array_reduce				
+- array_accumulate				
 - array_reduce_right		

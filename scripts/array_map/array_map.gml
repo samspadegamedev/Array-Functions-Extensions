@@ -9,7 +9,7 @@ _array = argument0;
 _script = argument1;
 _script_argument_array = argument2;
 
-var _new_array = array_copy_simple(_array);
+var _new_array = array_copy_shallow(_array);
 
 for (var i = 0; i < array_length_1d(_array); i++) {
 	script_execute(_script, _new_array, i, _script_argument_array);

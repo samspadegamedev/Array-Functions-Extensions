@@ -1,3 +1,4 @@
 
-
-return argument0 % 2 == 0;
+if (is_real(argument0)) {
+	return argument0 % 2 == 0;
+}

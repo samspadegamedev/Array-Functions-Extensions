@@ -6,7 +6,7 @@ var _array, _pos, _amount, _new_length, _new_array;
 
 _pos = argument[1];
 
-var _new_array = array_copy_simple(argument[0]);
+var _new_array = array_copy_shallow(argument[0]);
 
 _new_array = array_delete(_new_array, argument[1], argument[2]);
 
