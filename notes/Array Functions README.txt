@@ -1,4 +1,4 @@
-Overview
+GENERAL OVERVIEW
 
 Array Functions is a set of scripts that extend the normal use and function of arrays.
 This set of array functions specifically extends the normal use of 1d arrays and does
@@ -32,5 +32,26 @@ The following is a list of the added functions:
 - array_map					
 - array_for_each			
 - array_flatten				
-- array_accumulate				
-- array_reduce_right		
+- array_accumulate		
+- array_to_list			
+- list_to_array			
+
+
+NOTES ABOUT SCRIPTS
+
+I have attempted to operate on the array directly when possible, but in a number of cases
+it just doesn't appear to be due to the way GML handles arrays. For example, there is no
+ability to shrink an array's size, so any script which does that has to return a new array.
+
+I have not performanced tested any of the scripts. And in general, if choosing between an 
+easy to understand but more verbose version or a single line version, when with the more
+verbose version for ease of understanding and debugging.
+
+
+
+
+
+
+
+
+
