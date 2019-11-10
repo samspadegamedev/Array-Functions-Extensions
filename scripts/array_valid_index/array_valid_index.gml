@@ -23,8 +23,3 @@ if (is_real(_index)) {
 
 //return false
 return false;
-/// @function /// @function name
-			  /// @param
-			  /// @description
-/// @param
-/// @description
