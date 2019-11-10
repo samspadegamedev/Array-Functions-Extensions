@@ -22,7 +22,7 @@ The following is a list of the added functions:
 - array_insert				
 - array_delete				
 - array_splice				
-- array_find_value			
+- array_find_index			
 - array_shuffle			
 - array_sort				
 - array_copy_shallow			
@@ -48,7 +48,13 @@ easy to understand but more verbose version or a single line version, when with 
 verbose version for ease of understanding and debugging.
 
 
+CURRENT TODO LIST
 
+- strict and non-strict value of array_find_index
+- array_equals_deep
+- array_to_list_deep (and rename earlier version)
+- list_to_array_deep (and rename earlier version)
+- implement actual testing
 
 
 

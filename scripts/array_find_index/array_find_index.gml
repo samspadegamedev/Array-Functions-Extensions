@@ -1,4 +1,4 @@
-/// @function array_find_value(array, value)
+/// @function array_find_index(array, value)
 
 /// @param {array} array
 /// @param {variable} value

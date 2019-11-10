@@ -7,6 +7,57 @@ print();
 
 #region //tests
 
+#region ///array_valid_index test
+print_start("Array Valid Index TEST 1");
+array = [0, 1, 3, 4, 5];
+print("Initial array: ", array);
+print("Index of 0: ", array_valid_index(array, 0));
+print("Index of 1: ", array_valid_index(array, 1));
+print("Index of -1: ", array_valid_index(array, -1));
+print("Index of 1.5: ", array_valid_index(array, 1.5));
+print("Index of 5: ", array_valid_index(array, 5));
+print("Index of Hello World: ", array_valid_index(array, "Hello World"));
+
+print_start("Array Valid Index TEST 2");
+array = [];
+print("Initial array: ", array);
+print("Index of 0: ", array_valid_index(array, 0));
+#endregion
+
+#region ///array_get_safe test
+print_start("Array Get Safe TEST 1");
+array = ["Hello World", "Goodbye"];
+print("Initial array: ", array);
+print("Get Value at 0: ", array_get_safe(array, 0));
+print("Get Value at 1: ", array_get_safe(array, 1));
+print("Get Value at Hello World: ", array_get_safe(array, "Hello World"));
+print("Get Value at -1: ", array_get_safe(array, -1));
+print("Get Value at 1.2: ", array_get_safe(array, 1.2));
+print("Get Value at 3: ", array_get_safe(array, 3));
+
+print_start("Array  Get Safe TEST 2");
+array = [];
+print("Initial array: ", array);
+print("Get Value at 0: ", array_get_safe(array, 0));
+#endregion
+
+#region ///array_set_safe test
+print_start("Array Set Safe TEST 1");
+array = ["Hello World", "Goodbye"];
+print("Initial array: ", array);
+print("Set Value at 0: ", array_set_safe(array, 0, "Test 1"));
+print("Set Value at 1: ", array_set_safe(array, 1, "Test 2"));
+print("Set Value at Hello World: ", array_set_safe(array, "Hello World", "Test 3"));
+print("Set Value at -1: ", array_set_safe(array, -1, "Test 4"));
+print("Set Value at 1.1: ", array_set_safe(array, 1.1, "Test 5"));
+print("Set Value at 3: ", array_set_safe(array, 3, "Test 6"));
+
+print_start("Array  Get Safe TEST 2");
+array = [];
+print("Initial array: ", array);
+print("Set Value at 0: ", array_set_safe(array, 0, "Test 7"));
+#endregion
+
 #region ///array_swap test
 print_start("Array Swap TEST 1");
 array = [0, 1];
@@ -89,17 +140,31 @@ array = array_splice(array, 0, 6, "Hello World");
 print("After Splicing: ", array);
 #endregion
 
-#region ///array_find_value test
+#region ///array_find_index test
 print_start("Array Find Value TEST 1");
 array = [0, 1, "Hello World", 2, 3, 4, 5];
 print("Initial array: ", array);
-print("Index of Hello World is: ", array_find_value(array, "Hello World"));
-print("Index of Goodbye is: ", array_find_value(array, "Goodbye"));
+print("Index of Hello World is: ", array_find_index(array, "Hello World"));
+print("Index of Goodbye is: ", array_find_index(array, "Goodbye"));
 
 print_start("Array Find Value TEST 2");
 array = [];
 print("Initial array: ", array);
-print("Index of Hello World is: ", array_find_value(array, "Hello World"));
+print("Index of Hello World is: ", array_find_index(array, "Hello World"));
+#endregion
+
+#region ///array_find_index test
+print_start("Array Find Index All TEST 1");
+array = [0, 1, "Hello World", 1, 3, 1, 5];
+print("Initial array: ", array);
+print("Indexs of 1 is: ", array_find_index_all(array, 1));
+print("Index of Hello World is: ", array_find_index_all(array, "Hello World"));
+print("Index of Goodbye is: ", array_find_index_all(array, "Goodbye"));
+
+print_start("Array Find Index All TEST 2");
+array = [];
+print("Initial array: ", array);
+print("Index of Hello World is: ", array_find_index_all(array, "Hello World"));
 #endregion
 
 #region ///array_accumulate test
