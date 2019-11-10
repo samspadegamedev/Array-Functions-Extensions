@@ -29,12 +29,12 @@ The following is a list of the added functions:
 - array_copy_deep				
 - array_combine				
 - array_filter				
-- array_map					
+- array_for_each_copy					
 - array_for_each			
 - array_flatten				
 - array_accumulate		
-- array_to_list			
-- list_to_array			
+- array_to_list_shallow			
+- list_to_array_shallow			
 
 
 NOTES ABOUT SCRIPTS
@@ -50,10 +50,6 @@ verbose version for ease of understanding and debugging.
 
 CURRENT TODO LIST
 
-- strict and non-strict value of array_find_index
-- array_equals_deep
-- array_to_list_deep (and rename earlier version)
-- list_to_array_deep (and rename earlier version)
 - implement actual testing
 
 

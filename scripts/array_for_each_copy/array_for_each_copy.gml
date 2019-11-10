@@ -1,4 +1,4 @@
-/// @function array_map(array, script, ...script_arguments)
+/// @function array_for_each_copy(array, script, ...script_arguments)
 
 /// @param {array} array
 /// @param {scripts} script_id
@@ -20,7 +20,7 @@ var _new_array = array_copy_shallow(_array);
 
 //loop through new array and execute the script on each element
 for (var i = 0; i < array_length_1d(_array); i++) {
-	script_execute(_script, _new_array, i, _script_argument_array);
+	_new_array[i] = script_execute(_script, _array[i], _script_argument_array);
 }
 
 //return new array

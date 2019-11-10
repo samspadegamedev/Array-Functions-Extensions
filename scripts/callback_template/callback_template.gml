@@ -1,20 +1,18 @@
-/// @function callback_template(array, index, script_arguments)
+/// @function callback_template(value, script_arguments)
 
-/// @param {array} array
-/// @param {int} index
+/// @param {variable} value
 /// @param {array} script_arguments
 
-/// @description A template script for use with array_for_each and array_map
+/// @description A template script for use with array_for_each and array_for_each_copy
 
 
 //rename the arguments for ease of use
-var _array, _index, _scrit_arguments_array;
-_array = argument0;
-_index = argument1;
-_scrit_arguments_array = argument2;
+var _value, _scrit_arguments_array;
+_value = argument0;
+_scrit_arguments_array = argument1;
 
 //do something to the array here
 
 
 //return the array
-return _array;
+return _value;

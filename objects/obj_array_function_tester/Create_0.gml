@@ -153,7 +153,7 @@ print("Initial array: ", array);
 print("Index of Hello World is: ", array_find_index(array, "Hello World"));
 #endregion
 
-#region ///array_find_index test
+#region ///array_find_index_all test
 print_start("Array Find Index All TEST 1");
 array = [0, 1, "Hello World", 1, 3, 1, 5];
 print("Initial array: ", array);
@@ -165,6 +165,19 @@ print_start("Array Find Index All TEST 2");
 array = [];
 print("Initial array: ", array);
 print("Index of Hello World is: ", array_find_index_all(array, "Hello World"));
+#endregion
+
+#region ///array_find_index_non_strict test
+print_start("Array Find Value non strict TEST 1");
+array = [0, 1, "Hello World", 2, [0, 1, 2], 4, 5];
+print("Initial array: ", array);
+print("Index of Hello World is: ", array_find_index_non_strict(array, [0, 1, 2]));
+print("Index of Goodbye is: ", array_find_index_non_strict(array, [0, 2]));
+
+print_start("Array Find Value non strict TEST 2");
+array = [];
+print("Initial array: ", array);
+print("Index of Hello World is: ", array_find_index_non_strict(array, [0, 1, 2]));
 #endregion
 
 #region ///array_accumulate test
@@ -255,26 +268,45 @@ array_for_each(array, add_n_test, [1])
 print("After adding n (where n is one): ", array);
 #endregion
 
-#region ///array_map test
-print_start("Array Map Test");
+#region ///array_for_each_copy test
+print_start("Array Fore Each Copy Test");
 array = [0, 1, 2];
 print("Initial array: ", array);
-map_1 = array_map(array, add_five_test, []);
+map_1 = array_for_each_copy(array, add_five_test, []);
 print("After Adding 5: ", map_1);
-map_2 = array_map(array, add_n_test, [1])
+map_2 = array_for_each_copy(array, add_n_test, [1])
 print("After adding n (where n is one): ", map_2);
 print("Reprint Initial array: ", array);
 #endregion
 
-#region ///array_to_list and list_to_array test
-print_start("Array to List TEST");
+#region ///array_to_list_shallow and list_to_array_shallow test
+print_start("Array to List Shallow TEST");
 array = [0, 1, "Hello World"];
-list = array_to_list(array);
+list = array_to_list_shallow(array);
 print("Initial array: ", array);
 print("New List: ", list[| 0], list[| 1], list[| 2]);
 ds_list_add(list, 2, 3, 4, 5);
-array_from_list = list_to_array(list);
+array_from_list = list_to_array_shallow(list);
 print("Array from List: ", array_from_list);
+#endregion
+
+#region ///array_to_list_deep test
+print_start("Array to List Deep TEST");
+array = [0, 1, ["Hello World", "Goodbye"]];
+list = array_to_list_deep(array);
+print("Initial array: ", array);
+var sub_list = list[| 2];
+print("New List: ", list[| 0], list[| 1], sub_list[| 0], sub_list[| 1]);
+#endregion
+
+#region ///array_equals_deep test
+print_start("Array Equals Deep TEST");
+array_a = [0, 1, ["Hello World", "Goodbye"]];
+array_b = [0, 1, ["Hello World", "Goodbye"]];
+array_c = [0, 1, ["Hello World", "Hi"]];
+print("Initial arrays: ", array_a, array_b);
+print("Do Arrays A and B Equal Each Other? ", array_equals_deep(array_a, array_b));
+print("Do Arrays A and C Equal Each Other? ", array_equals_deep(array_a, array_c));
 #endregion
 
 

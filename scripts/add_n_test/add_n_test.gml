@@ -1,15 +1,15 @@
-/// @function add_five_test
-/// @param {array} array
-/// @param {int} index
-/// @param {array} script_arguments
-/// @description
+/// @function add_n_test(value, script_arguments_array)
 
+/// @param {variable} value
+/// @param {array} script_arguments_array
 
-var _array, _index, _scrit_arguments_array;
-_array = argument0;
-_index = argument1;
-_scrit_arguments_array = argument2;
+/// @description adds n to the value
 
-_array[@ _index] = _array[_index] + _scrit_arguments_array[0];
+//rename the arguments for ease of use
+var _value, _scrit_arguments_array;
+_value = argument0;
+_scrit_arguments_array = argument1;
 
-return _array;
+_value += _scrit_arguments_array[0];
+
+return _value;

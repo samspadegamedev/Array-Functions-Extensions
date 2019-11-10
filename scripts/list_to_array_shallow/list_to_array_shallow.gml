@@ -1,4 +1,4 @@
-/// @function array_to_list(list)
+/// @function array_to_list_shallow(list)
 
 /// @param {ds_list} list
 

@@ -1,9 +1,9 @@
-/// @function array_to_list(array)
+/// @function array_to_list_shallow(array)
 
 /// @param {array} array
 
 /// @description Takes an array and returns an list. Note - this function creates
-///				 and returns an array. This array must be destroyed at some point. 
+///				 and returns an list. This list must be destroyed at some point. 
 ///				 Note - this is a shallow copy only. Will not create nested lists.
 
 

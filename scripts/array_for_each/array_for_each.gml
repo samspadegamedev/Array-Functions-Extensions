@@ -16,7 +16,7 @@ _script_argument_array = argument2;
 
 //loop through array and execute the script on each element
 for (var i = 0; i < array_length_1d(_array); i++) {
-	script_execute(_script, _array, i, _script_argument_array);
+	_array[@ i] = script_execute(_script, _array[i], _script_argument_array);
 }
 
 //return original array
