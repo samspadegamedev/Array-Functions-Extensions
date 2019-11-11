@@ -17,24 +17,32 @@ You can find out more about these functions in the manual. Some of them are used
 inside of the custom array functions.
 
 The following is a list of the added functions:
+- array_valid_index
+- array_get_safe
+- array_set_safe
 - array_swap
+- array_copy_shallow			
+- array_copy_deep	
 - array_add					
 - array_insert				
 - array_delete				
 - array_splice				
 - array_find_index			
+- array_find_index_non_strict			
+- array_find_index_all
+- array_accumulate	
+- array_combine	
 - array_shuffle			
-- array_sort				
-- array_copy_shallow			
-- array_copy_deep				
-- array_combine				
+- array_sort										
 - array_filter				
 - array_for_each_copy					
 - array_for_each			
-- array_flatten				
-- array_accumulate		
+- array_flatten					
 - array_to_list_shallow			
+- array_to_list_deep		
 - list_to_array_shallow			
+- list_to_array_deep		
+- array_equals_deep
 
 
 NOTES ABOUT SCRIPTS
@@ -48,11 +56,13 @@ easy to understand but more verbose version or a single line version, when with 
 verbose version for ease of understanding and debugging.
 
 
-CURRENT TODO LIST
+QUESTIONS
+There's no way to set a value in an empty array with array_set_safe. I think this should 
+be the expected result. But I will think about it.
 
-- implement actual testing
-
-
+array_set_safe accepts true and false (0 and 1) as valid indexs assuming the array has a 
+length of 0 or 1. This seems like an issue with array_valid_index which I should double
+check.
 
 
 
