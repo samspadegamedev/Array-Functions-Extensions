@@ -16,8 +16,8 @@
             "name": "Instances",
             "id": "e98d4ff8-ce6f-4792-b136-dced2193d662",
             "depth": 0,
-            "grid_x": 32,
-            "grid_y": 32,
+            "grid_x": 20,
+            "grid_y": 20,
             "hierarchyFrozen": false,
             "hierarchyVisible": true,
             "inheritLayerDepth": false,
@@ -87,12 +87,12 @@
     },
     "roomSettings":     {
         "id": "27c3d463-2a03-4f92-984b-5cee8b521a55",
-        "Height": 768,
+        "Height": 400,
         "inheritRoomSettings": false,
         "modelName": "GMRoomSettings",
         "persistent": false,
         "mvc": "1.0",
-        "Width": 1024
+        "Width": 400
     },
     "mvc": "1.0",
     "views": [

@@ -15,8 +15,8 @@
 var _array, _position, _amount, _length, _new_array;
 _array = argument0;
 _position = argument1;
-_amount = argument2;
 _length = array_length_1d(_array);
+_amount = min(_length - _position, argument2);
 
 //create the new shorter array
 _new_array = array_create(_length - _amount);
