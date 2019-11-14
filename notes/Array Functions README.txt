@@ -64,6 +64,10 @@ array_set_safe accepts true and false (0 and 1) as valid indexs assuming the arr
 length of 0 or 1. This seems like an issue with array_valid_index which I should double
 check.
 
+array_insert can accept a position larger than its size. Filling the blanks with zeros. 
+How to handle some of the strange inputs with inserting and deleint? Throw errors or do the 
+best possible? 
+
 
 
 

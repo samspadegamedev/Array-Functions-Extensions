@@ -84,11 +84,11 @@ print("Copied Array: ", shallow_copy);
 print_start("Array Add");
 array = [0, 1];
 print("Initial array: ", array);
-array_add(array);
+array_add_to_end(array);
 print("After Adding: ", array);
-array_add(array, "Hello World");
+array_add_to_end(array, "Hello World");
 print("After Adding: ", array);
-array_add(array, 2, 3, 4, "Goodbye");
+array_add_to_end(array, 2, 3, 4, "Goodbye");
 print("After Adding: ", array);
 #endregion
 

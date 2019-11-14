@@ -14,9 +14,9 @@ _new_array = [];
 //recursively loop the array and either copy or add as relevant
 for(var i = 0; i < array_length_1d(_old_array); i++){
     if(is_array(_old_array[i])) {
-      	array_add(_new_array, array_copy_deep(_old_array[i]));  
+      	array_add_to_end(_new_array, array_copy_deep(_old_array[i]));  
     } else {
-		array_add(_new_array, _old_array[i]);
+		array_add_to_end(_new_array, _old_array[i]);
     }
 } 
 

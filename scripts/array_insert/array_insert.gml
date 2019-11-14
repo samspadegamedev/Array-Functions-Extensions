@@ -8,28 +8,30 @@
 ///				 Note - returns a new array. MUST be assigned to be any use.
 
 //rename arguments for ease of use
-var _array, _pos, _amount, _new_length, _new_array;
+var _array, _pos, _amount, _new_length;
 _array = argument[0];
 _pos = argument[1];
 _amount = argument_count - 2;
 _new_length = array_length_1d(_array) + _amount;
-_new_array = array_create(_new_length);
+
+//throw error if insert length is longer than array
+if (_pos > array_length_1d(_array)) return _array;
 
 //loop through the original array and copy the values
 //into the new array, adding in the values at location
-for (var i = 0; i < _new_length; i++) {
+for (var i = _new_length - 1; i >= 0; i--) {
 	if (i < _pos) {
-		_new_array[i] = _array[i];
+		_array[@ i] = _array[i];
 	} else if (i >= _pos + _amount) {
-		_new_array[i] = _array[i - _amount];
+		_array[@ i] = _array[i - _amount];
 	} else {
 		var _val = i - _pos + 2;
-		_new_array[i] = argument[_val];
+		_array[@ i] = argument[_val];
 	}
 }
 
 //return new array
-return _new_array;
+return _array;
 
 
 

@@ -105,11 +105,11 @@ assert_fail(array_equals(deep_copy, array), "Arrays arn't equal");
 #region ///array_add test
 array = [0, 1];
 assert(array_equals([0, 1], array), "Arrays arn't equal");
-array_add(array);
+array_add_to_end(array);
 assert(array_equals([0, 1], array), "Arrays arn't equal");
-array_add(array, "Hello World");
+array_add_to_end(array, "Hello World");
 assert(array_equals([0, 1, "Hello World"], array), "Arrays arn't equal");
-array_add(array, 2, 3, 4, "Goodbye");
+array_add_to_end(array, 2, 3, 4, "Goodbye");
 assert(array_equals([0, 1, "Hello World", 2, 3, 4, "Goodbye"], array), "Arrays arn't equal");
 #endregion
 
@@ -128,24 +128,37 @@ array = [1, 2, 3, 4, 5];
 assert(array_equals([1, 2, 3, 4, 5], array), "Arrays arn't equal");
 array = array_delete(array, 1.5, 1);
 assert(array_equals([1, 2, 4, 5], array), "Arrays arn't equal");
+
+array = [];
+array = array_delete(array, 0, 0);
+assert(array_equals([], array), "Arrays arn't equal");
+
 #endregion
 
 #region ///array_insert test
 array = [0, 1, "Hello World"];
 assert(array_equals([0, 1, "Hello World"], array), "Arrays arn't equal");
-array = array_insert(array, 0, 2);
+array_insert(array, 0, 2);
 assert(array_equals([2, 0, 1, "Hello World"], array), "Arrays arn't equal");
+array_insert(array, 10, 2);
+assert(array_equals([2, 0, 1, "Hello World"], array), "Arrays arn't equal");
+array_insert(array, 4, "Goodbye", "Hello", 1, 2, 4);
+assert(array_equals([2, 0, 1, "Hello World", "Goodbye", "Hello", 1, 2, 4], array), "Arrays arn't equal");
 
 
 array = [0, 1, 2, 3, 4, 5];
 assert(array_equals([0, 1, 2, 3, 4, 5], array), "Arrays arn't equal");
-array = array_insert(array, 5, "Hello World", "Goodbye");
+array_insert(array, 5, "Hello World", "Goodbye");
 assert(array_equals([0, 1, 2, 3, 4, "Hello World", "Goodbye", 5], array), "Arrays arn't equal");
 #endregion
 
 #region ///array_splice test
 array = [0, 1, "Hello World"];
 assert(array_equals([0, 1, "Hello World"], array), "Arrays arn't equal");
+array = array_splice(array, 2, 1, 2, 3, 4, 5);
+assert(array_equals([0, 1, 2, 3, 4, 5], array), "Arrays arn't equal");
+
+array = [0, 1];
 array = array_splice(array, 2, 1, 2, 3, 4, 5);
 assert(array_equals([0, 1, 2, 3, 4, 5], array), "Arrays arn't equal");
 
@@ -226,9 +239,7 @@ assert(array_equals(["a", "b", "C", "Goodbye", "Hello World", 1], array_sort(arr
 #endregion
 
 #region //array_shuffle test
-array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-is_array(array_shuffle(array))
-assert(is_array(array_shuffle(array)), "It's not an array anymore for some reason");
+//not sure how to test
 #endregion
 
 #region ///array_filter test
@@ -261,12 +272,7 @@ assert(array_equals([0, 1, "Hello World", 2, 3, 4, 5], array_from_list), "Arrays
 #endregion
 
 #region ///array_to_list_deep test
-print_start("Array to List Deep TEST");
-array = [0, 1, ["Hello World", "Goodbye"]];
-list = array_to_list_deep(array);
-print("Initial array: ", array);
-var sub_list = list[| 2];
-print("New List: ", list[| 0], list[| 1], sub_list[| 0], sub_list[| 1]);
+//not sure how to test
 #endregion
 
 #region ///array_equals_deep test
