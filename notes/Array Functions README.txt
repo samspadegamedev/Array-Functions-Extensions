@@ -31,7 +31,7 @@ The following is a list of the added functions:
 - array_find_index_non_strict			
 - array_find_index_all
 - array_accumulate	
-- array_combine	
+- array_join	
 - array_shuffle			
 - array_sort										
 - array_filter				

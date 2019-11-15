@@ -206,21 +206,21 @@ array = [];
 assert_equal(array_accumulate(array), 0);
 #endregion
 
-#region ///array_combine test
+#region ///array_join test
 array_a = [0, 1, 2, 3, 4, 5];
 array_b = [6, 7, 8];
-assert(array_equals([0, 1, 2, 3, 4, 5, 6, 7, 8], array_combine(array_a, array_b)), "Arrays arn't equal");
+assert(array_equals([0, 1, 2, 3, 4, 5, 6, 7, 8], array_join(array_a, array_b)), "Arrays arn't equal");
 
 array_a = [];
 array_b = [6, 7, 8];
-assert(array_equals([6, 7, 8], array_combine(array_a, array_b)), "Arrays arn't equal");
+assert(array_equals([6, 7, 8], array_join(array_a, array_b)), "Arrays arn't equal");
 
 
 array_a = [0, 1, 2, 3, 4, 5];
 array_b = [6, 7, 8];
 array_c = [9, 10, "Hello World"];
-assert(array_equals([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Hello World"], array_combine(array_a, array_b, array_c)), "Arrays arn't equal"); 
-assert(array_equals([9, 10, "Hello World", 0, 1, 2, 3, 4, 5, 6, 7, 8], array_combine(array_c, array_a, array_b)), "Arrays arn't equal"); 
+assert(array_equals([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Hello World"], array_join(array_a, array_b, array_c)), "Arrays arn't equal"); 
+assert(array_equals([9, 10, "Hello World", 0, 1, 2, 3, 4, 5, 6, 7, 8], array_join(array_c, array_a, array_b)), "Arrays arn't equal"); 
 
 #endregion
 

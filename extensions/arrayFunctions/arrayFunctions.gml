@@ -245,7 +245,7 @@
 /// @description Takes an array and returns an list. Note - this function creates and returns an list. This list must be destroyed at some point. Note - this is a shallow copy only. Will not create nested lists.
 
 {
-    var = _new_list = ds_list_create();
+    var _new_list = ds_list_create();
     for (var i = 0; i < array_length_1d(argument0); i += 1) {
         ds_list_add(_new_list, argument0[i]);
     }
@@ -271,6 +271,235 @@
     
     return _new_list;
 }
+
+
+#define array_equals_deep
+/// @function array_equals_deep(array, array)
+/// @param {array} array
+/// @param {array} array
+/// @description Returns true if the two arrays are equal to each other tests against all nested copies.
+
+{
+    if (array_length_1d(argument0) != array_length_1d(argument1)) {
+        return false;
+    } 
+
+    for(var i = 0; i < array_length_1d(argument0); i++) {
+        if(is_array(argument0[i]) && is_array(argument1[i])) {
+            if(!array_equals_deep(argument0[i], argument1[i])) return false;
+        } else {
+            if (argument0[i] != argument1[i]) return false;
+        }
+    } 
+
+    return true;
+}
+
+
+#define array_find_index
+/// @function array_find_index(array, value)
+/// @param {array} array
+/// @param {variable} value
+/// @description Returns the first index of the value specified, searching from left to right. Returns -1 if the value is not found.
+
+{
+    var _length = array_length_1d(argument0);
+    for (var i = 0; i < _length; i++) {
+        if (argument0[i] == argument1) {
+            return i;
+        }
+    }
+
+    return -1;    
+}
+
+
+#define array_find_index_non_strict
+/// @function array_find_index_non_strict(array, value)
+/// @param {array} array
+/// @param {variable} value
+/// @description Returns the first index of the value specified, searching from left to right. Returns -1 if the value is not found.
+
+{
+    var _length = array_length_1d(argument0);
+
+    switch (is_array(argument1)) {
+
+        case false:
+            for (var i = 0; i < _length; i++) {
+                if (argument0[i] == argument1) {
+                    return i;
+                }	
+            }
+            break;
+
+        case true:
+            for (var i = 0; i < _length; i++) {
+                if (array_equals_deep(argument0[i], argument1)) {
+                    return i;
+                }	
+            }
+            break;
+    }
+
+    return -1;   
+}
+
+
+#define array_find_index_all
+/// @function array_find_index_all(array, value)
+/// @param {array} array
+/// @param {variable} value
+/// @description Returns an array of all indexs containing the value specified, searching from left to right. Returns an empty array if the value is not found.
+
+{
+    var _length, _new_array, _counter;
+    _length = array_length_1d(argument0);
+    _new_array = [];
+    _counter = 0;
+    
+    for (var i = 0; i < _length; i++) {
+        if (argument0[i] == argument1) {
+            _new_array[_counter++] = i;
+        }
+    }
+
+    return _new_array;
+}
+
+
+#define array_accumulate
+/// @function array_accumulate(array)
+/// @param {array} array
+/// @description Returns the total value of all numbers in an array. Note - this script will cause an error if the array contains anything except numbers.
+
+{
+    var _length, _accumulator;
+    _length = array_length_1d(argument0);
+    _accumulator = 0;
+
+    for (var i = 0; i < _length; i++) {
+        _accumulator += argument0[i];
+    }
+
+    return _accumulator;    
+}
+
+
+#define array_flatten
+/// @function array_flatten(array)
+/// @param {array} array
+/// @description Recursively loops through the provided array and returns a new array the contains the values of the old array without any nesting. Note - will remove any completely empty arrays.  Note - returns a new array. MUST be assigned to be any use.
+
+{
+    var _new_array = [];
+
+    for(var i = 0; i < array_length_1d(argument0); i++){
+        if(is_array(argument0[i])) {
+            _new_array = array_join(_new_array, array_flatten(argument0[i]));  
+        } else {
+            array_add_to_end(_new_array, argument0[i]);
+        }
+    } 
+
+    return _new_array;
+}
+
+
+#define array_sort
+/// @function array_sort(array, sorting_script)
+/// @param {array} array
+/// @param {script} sorting_script
+/// @description Sorts an array using the sorting script provided. Modifies and eturns the original array. Does not need to be assigned. Uses a simple bubble sort: Time Complexity is O(n^2)
+
+{
+    var _no_change;
+
+    for (var i = array_length_1d(argument0); i > 0; i -= 1) {
+        _no_change = true;
+        for (var j = 0; j < i - 1; j+= 1) {
+            if (script_execute(argument1, argument0[j], argument0[j + 1])) {
+                array_swap(argument0, j, j + 1);
+                _no_change = false;
+            }
+
+        }
+        if (_no_change) break;
+    }
+
+    return argument0;
+}
+
+
+#define array_shuffle
+/// @function array_shuffle(array)
+/// @param {array} array
+/// @description Randomizes the order of an array. It does return the array, however, it will add them to the array itself. 
+
+{
+    var _length = array_length_1d(argument0);
+    repeat (_length)
+    {
+        array_swap(argument0, irandom(_length - 1), irandom(_length - 1));
+    }
+
+    return argument0;
+}
+
+
+#define array_filter
+/// @function array_filter(array, filter_script)
+/// @param {array} array
+/// @param {script} filter_script
+/// @description Creates and returns a new array that only has the values from the prior array that meet the requirement of the filter script.
+
+{
+    var _new_array, _counter;
+    _new_array = [];
+    _counter = 0;
+    for (var i = 0; i < array_length_1d(argument0); i += 1) {
+        if (script_execute(argument1, argument0[i])) {
+            _new_array[_counter++] = argument0[i];
+        }
+    }
+
+    return _new_array;
+}
+
+
+#define array_for_each
+/// @function array_for_each(array, script, script_arguments_array)
+/// @param {array} array
+/// @param {scripts} script_id
+/// @param {array} arguments
+/// @description Performs the script on each element of the array. It does return the array, however, it will add them to the array itself. 
+
+{
+    for (var i = 0; i < array_length_1d(argument0); i++) {
+        argument0[@ i] = script_execute(argument1, argument0[i], argument2);
+    }
+
+    return argument0;
+}
+
+
+#define array_for_each_copy
+/// @function array_for_each_copy(array, script, script_arguments_array)
+/// @param {array} array
+/// @param {scripts} script_id
+/// @param {array} arguments
+/// @description Copies the array and performs the script on each element of the copied array. Note - returns a new array. MUST be assigned to be any use.
+
+{
+    var _new_array = array_copy_shallow(argument0);   
+    for (var i = 0; i < array_length_1d(argument0); i++) {
+        _new_array[i] = script_execute(argument1, argument0[i], argument2);
+    }
+
+    return _new_array;   
+}
+
+
 
 
 

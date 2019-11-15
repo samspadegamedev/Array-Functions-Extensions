@@ -192,25 +192,25 @@ print("Initial array: ", array);
 print("Accumulated Value is: ", array_accumulate(array));
 #endregion
 
-#region ///array_combine test
+#region ///array_join test
 print_start("Array Combine TEST 1");
 array_a = [0, 1, 2, 3, 4, 5];
 array_b = [6, 7, 8];
 print("Initial arrays: ", array_a, array_b);
-print("Final Array Is: ", array_combine(array_a, array_b));
+print("Final Array Is: ", array_join(array_a, array_b));
 
 print_start("Array Combine TEST 2");
 array_a = [];
 array_b = [6, 7, 8];
 print("Initial arrays: ", array_a, array_b);
-print("Final Array Is: ", array_combine(array_a, array_b));
+print("Final Array Is: ", array_join(array_a, array_b));
 
 print_start("Array Combine TEST 3");
 array_a = [0, 1, 2, 3, 4, 5];
 array_b = [6, 7, 8];
 array_c = [9, 10, "Hello World"];
 print("Initial arrays: ", array_a, array_b, array_c);
-print("Final Array Is: ", array_combine(array_a, array_c, array_b));
+print("Final Array Is: ", array_join(array_a, array_c, array_b));
 #endregion
 
 #region ///array_flatten test
