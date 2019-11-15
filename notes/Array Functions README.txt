@@ -20,7 +20,7 @@ The following is a list of the added functions:
 - array_valid_index
 - array_get_safe
 - array_set_safe
-- array_swap
+- array_swap_positions
 - array_copy_shallow			
 - array_copy_deep	
 - array_add					

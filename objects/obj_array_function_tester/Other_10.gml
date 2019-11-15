@@ -68,13 +68,13 @@ assert(array_equals([], array), "Arrays arn't equal");
 
 #endregion
 
-#region ///array_swap test
+#region ///array_swap_positions test
 array = [0, 1];
-array_swap(array, 0, 1);
+array_swap_positions(array, 0, 1);
 assert(array_equals([1, 0], array), "Arrays arn't equal");
 
 array = [0, [], 1];
-array_swap(array, 2, 1);
+array_swap_positions(array, 2, 1);
 assert(array_equals_deep([0, 1, []], array), "Arrays arn't equal");
 #endregion
 

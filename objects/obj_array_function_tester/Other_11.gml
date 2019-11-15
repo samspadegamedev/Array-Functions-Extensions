@@ -58,17 +58,17 @@ print("Initial array: ", array);
 print("Set Value at 0: ", array_set_safe(array, 0, "Test 7"));
 #endregion
 
-#region ///array_swap test
+#region ///array_swap_positions test
 print_start("Array Swap TEST 1");
 array = [0, 1];
 print("Initial array: ", array);
-array_swap(array, 0, 1);
+array_swap_positions(array, 0, 1);
 print("After Swaping: ", array);
 
 print_start("Array Swap TEST 2");
 array = [0, [], 1];
 print("Initial array: ", array);
-array_swap(array, 2, 1);
+array_swap_positions(array, 2, 1);
 print("After Swaping: ", array);
 #endregion
 

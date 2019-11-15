@@ -109,11 +109,11 @@
                     "args": [
                         2
                     ],
-                    "externalName": "array_swap",
+                    "externalName": "array_swap_positions",
                     "help": "array_swap(array, pos_1, pos_2)",
                     "hidden": false,
                     "kind": 2,
-                    "name": "array_swap",
+                    "name": "array_swap_positions",
                     "returnType": 2
                 },
                 {
@@ -187,7 +187,7 @@
                         
                     ],
                     "externalName": "array_splice",
-                    "help": "array_splice(array, pos, delete_amount, ...values)",
+                    "help": "array_splice(array, position, amount_to_delete, ...values)",
                     "hidden": false,
                     "kind": 2,
                     "name": "array_splice",

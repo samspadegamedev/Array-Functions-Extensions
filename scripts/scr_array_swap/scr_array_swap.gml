@@ -1,4 +1,4 @@
-/// @function array_swap(array, pos_1, pos_2)
+/// @function array_swap_positions(array, pos_1, pos_2)
 
 /// @param {array} array			
 /// @param {int} pos_1				

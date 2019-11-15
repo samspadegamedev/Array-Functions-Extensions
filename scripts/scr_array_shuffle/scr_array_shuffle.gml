@@ -14,7 +14,7 @@ _length = array_length_1d(_array);
 //shuffle the contents of the array
 repeat (_length)
 {
-	array_swap(_array, irandom(_length - 1), irandom(_length - 1));
+	array_swap_positions(_array, irandom(_length - 1), irandom(_length - 1));
 }
 
 //return the original array

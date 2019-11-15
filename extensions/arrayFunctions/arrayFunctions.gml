@@ -21,7 +21,7 @@
 /// @function array_get_safe(array, index)
 /// @param {array} array
 /// @param {int} index
-/// @description Returns the value of an array at the given index. If the index is a valid index. Otherwise returns undefined.
+/// @description Returns the value of an array at the given index if the index is a valid index. Otherwise returns undefined.
 
 {
     if (array_valid_index(argument0, argument1)) {
@@ -37,7 +37,7 @@
 /// @param {array} array
 /// @param {int} index
 /// @param {variable} value
-/// @description Sets the value of an array at the given index. If the index is a valid index. Returns the array regardless of whether the value was updated or not.
+/// @description Sets the value of an array at the given index if the index is a valid index. Returns the array regardless of whether the value was updated or not.
 
 {
     if (array_valid_index(argument0, argument1)) {
@@ -48,12 +48,12 @@
 }
 
 
-#define array_swap
-/// @function array_swap(array, pos_1, pos_2)
+#define array_swap_positions
+/// @function array_swap_positions(array, position_1, position_2)
 /// @param {array} array			
-/// @param {int} pos_1				
-/// @param {int} pos_2
-/// @description Swaps two positions in an array. It does return the array, however, it will swap them in position. Note: this function will error out if you try to reference a position outside of the array.
+/// @param {int} position_1				
+/// @param {int} position_2
+/// @description Swaps two positions in an array. It does return the array; however, it swaps them in position.
 
 {
     var _temp = argument0[argument1];
@@ -85,8 +85,10 @@
 /// @description Returns a deep copy of the provided array. It will copy over any nested arrays. Note - returns a new array. MUST be assigned to be any use.
 
 {
-    var _new_array = [];
-    for(var i = 0; i < array_length_1d(argument0); i++){
+    var _new_array, _length;
+    _new_array = [];
+    _length = array_length_1d(argument0);
+    for(var i = 0; i < _length; i++){
         if(is_array(argument0[i])) {
             array_add_to_end(_new_array, array_copy_deep(argument0[i]));  
         } else {
@@ -102,7 +104,7 @@
 /// @function array_add(array, ...)
 /// @param {array} array			
 /// @param {variables} ...values			
-/// @description Add variables to the end of an array. It does return the array, however, it will add them to the array itself. 
+/// @description Add variables to the end of an array. It does return the array; however, it will add them to the array itself. 
 
 {
     var _array = argument[0];   
@@ -119,25 +121,24 @@
 /// @param {array} id
 /// @param {int} pos
 /// @param {value} ...values
-/// @description Deletes the values specified starting at the specified point. Note - returns a new array. MUST be assigned to be any use.
+/// @description Inserts the values specified starting at the specified point. It does return the array; however, it will add them to the array itself. 
 
 {
-    var _array, _pos, _amount, _new_length;
+    var _array, _pos, _amount_to_add, _new_length;
     _array = argument[0];
     _pos = argument[1];
-    _amount = argument_count - 2;
-    _new_length = array_length_1d(_array) + _amount;
+    _amount_to_add = argument_count - 2;
+    _new_length = array_length_1d(_array) + _amount_to_add;
 
     if (_pos > array_length_1d(_array)) return _array;
 
     for (var i = _new_length - 1; i >= 0; i--) {
         if (i < _pos) {
             _array[@ i] = _array[i];
-        } else if (i >= _pos + _amount) {
-            _array[@ i] = _array[i - _amount];
+        } else if (i >= _pos + _amount_to_add) {
+            _array[@ i] = _array[i - _amount_to_add];
         } else {
-            var _val = i - _pos + 2;
-            _array[@ i] = argument[_val];
+            _array[@ i] = argument[i - _pos + 2];
         }
     }
 
@@ -153,16 +154,16 @@
 /// @description Deletes the amount of values specified starting at the specified. Note - returns a new array. MUST be assigned to be any use. Note - due to the way this script works, it will not error out if you use position or amounts outside of the array's range, but it will not work the way you think it will.
 
 {
-    var _amount, _length, _new_array;
+    var _amount_to_delete, _length, _new_array;
     _length = array_length_1d(argument0);
-    _amount = min(_length - argument1, argument2);
-    _new_array = array_create(_length - _amount);
+    _amount_to_delete = min(_length - argument1, argument2);
+    _new_array = array_create(_length - _amount_to_delete);
 
-    for (var i = 0; i < _length - _amount; i++) {
+    for (var i = 0; i < _length - _amount_to_delete; i++) {
         if (i < argument1) {
             _new_array[i] = argument0[i];
         } else {
-            _new_array[i]= argument0[i + _amount];
+            _new_array[i]= argument0[i + _amount_to_delete];
         }
     }
 
@@ -171,26 +172,26 @@
 
 
 #define array_splice
-/// @function array_splice(array, pos, delete_amount, ...values)
+/// @function array_splice(array, position, amount_to_delete, ...values)
 /// @param {array} array
-/// @param {int} pos
-/// @param {int} amount
+/// @param {int} position
+/// @param {int} amount_to_delete
 /// @param {value} ...values
 
 {
-    var _array, _position, _delete_amount, _add_amount, _new_array;
+    var _array, _position, _amount_to_delete, _amount_to_add, _new_array;
     _array = argument[0];
     _position = argument[1];
-    _delete_amount = argument[2];
-    _add_amount = argument_count - 3;
+    _amount_to_delete = argument[2];
+    _amount_to_add = argument_count - 3;
 
-    _new_array = array_delete(_array, _position, _delete_amount);
+    _new_array = array_delete(_array, _position, _amount_to_delete);
 
-    for (var i = array_length_1d(_new_array) + _add_amount - 1; i >= 0; i--) {
+    for (var i = array_length_1d(_new_array) + _amount_to_add - 1; i >= 0; i--) {
         if (i < _position) {
             _new_array[@ i] = _new_array[i];
-        } else if (i >= _position + _add_amount) {
-            _new_array[@ i] = _array[i - _add_amount];
+        } else if (i >= _position + _amount_to_add) {
+            _new_array[@ i] = _array[i - _amount_to_add];
         } else {
             _new_array[@ i] = argument[i - _position + 3];
         }
@@ -242,11 +243,13 @@
 #define array_to_list_shallow
 /// @function array_to_list_shallow(array)
 /// @param {array} array
-/// @description Takes an array and returns an list. Note - this function creates and returns an list. This list must be destroyed at some point. Note - this is a shallow copy only. Will not create nested lists.
+/// @description Takes an array and returns an list. Note - this function creates and returns a list. This list must be destroyed at some point. Note - this is a shallow copy only. Will not create nested lists.
 
 {
-    var _new_list = ds_list_create();
-    for (var i = 0; i < array_length_1d(argument0); i += 1) {
+    var _new_list, _length;
+    _new_list = ds_list_create();
+    _length = array_length_1d(argument0)
+    for (var i = 0; i < _length; i += 1) {
         ds_list_add(_new_list, argument0[i]);
     }
 
@@ -260,8 +263,10 @@
 /// @description Takes an array and returns an list. Note - this function creates and returns an list. This list must be destroyed at some point. Note - this is a deep copy and will create nested lists. This lists must be destroyed as well. Switching ds_list_add with list_add_list will mark all sub lists as lists, allowing for automatic destruction of sub lists when destroying the main list.
 
 {
-    var _new_list = ds_list_create();
-    for(var i = 0; i < array_length_1d(argument0); i++){
+    var _new_list, _length;
+    _new_list = ds_list_create();
+    _length = array_length_1d(argument0)
+    for(var i = 0; i < _length; i++){
         if(is_array(argument0[i])) {
             ds_list_add(_new_list, array_to_list_deep(argument0[i]));  
         } else {
@@ -277,14 +282,15 @@
 /// @function array_equals_deep(array, array)
 /// @param {array} array
 /// @param {array} array
-/// @description Returns true if the two arrays are equal to each other tests against all nested copies.
+/// @description Returns true if the two arrays contain the same value as each other. Tests against all nested copies.
 
 {
     if (array_length_1d(argument0) != array_length_1d(argument1)) {
         return false;
     } 
 
-    for(var i = 0; i < array_length_1d(argument0); i++) {
+    var _length = array_length_1d(argument0)
+    for(var i = 0; i < _length; i++) {
         if(is_array(argument0[i]) && is_array(argument1[i])) {
             if(!array_equals_deep(argument0[i], argument1[i])) return false;
         } else {
@@ -392,9 +398,11 @@
 /// @description Recursively loops through the provided array and returns a new array the contains the values of the old array without any nesting. Note - will remove any completely empty arrays.  Note - returns a new array. MUST be assigned to be any use.
 
 {
-    var _new_array = [];
-
-    for(var i = 0; i < array_length_1d(argument0); i++){
+    var _new_array, _length; 
+    _new_array = [];
+    _length = array_length_1d(argument0);
+    
+    for(var i = 0; i < _length; i++){
         if(is_array(argument0[i])) {
             _new_array = array_join(_new_array, array_flatten(argument0[i]));  
         } else {
@@ -419,7 +427,7 @@
         _no_change = true;
         for (var j = 0; j < i - 1; j+= 1) {
             if (script_execute(argument1, argument0[j], argument0[j + 1])) {
-                array_swap(argument0, j, j + 1);
+                array_swap_positions(argument0, j, j + 1);
                 _no_change = false;
             }
 
@@ -440,7 +448,7 @@
     var _length = array_length_1d(argument0);
     repeat (_length)
     {
-        array_swap(argument0, irandom(_length - 1), irandom(_length - 1));
+        array_swap_positions(argument0, irandom(_length - 1), irandom(_length - 1));
     }
 
     return argument0;
@@ -454,10 +462,11 @@
 /// @description Creates and returns a new array that only has the values from the prior array that meet the requirement of the filter script.
 
 {
-    var _new_array, _counter;
+    var _new_array, _counter, _length;
     _new_array = [];
     _counter = 0;
-    for (var i = 0; i < array_length_1d(argument0); i += 1) {
+    _length = array_length_1d(argument0);
+    for (var i = 0; i < _length; i += 1) {
         if (script_execute(argument1, argument0[i])) {
             _new_array[_counter++] = argument0[i];
         }
