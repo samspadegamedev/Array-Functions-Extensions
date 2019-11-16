@@ -1,6 +1,6 @@
 #define array_valid_index
 /// @function array_valid_index(array, index)
-/// @param {array} array
+/// @param {array_id} array
 /// @param {int} index
 /// @description Returns true if the index is a valid index for the array. Otherwise returns false. 
 
@@ -17,40 +17,9 @@
 }
 
 
-#define array_get_safe
-/// @function array_get_safe(array, index)
-/// @param {array} array
-/// @param {int} index
-/// @description Returns the value of an array at the given index if the index is a valid index. Otherwise returns undefined.
-
-{
-    if (array_valid_index(argument0, argument1)) {
-        return argument0[argument1];
-    }
-
-    return undefined;
-}
-
-
-#define array_set_safe
-/// @function array_get_safe(array, index, value)
-/// @param {array} array
-/// @param {int} index
-/// @param {variable} value
-/// @description Sets the value of an array at the given index if the index is a valid index. Returns the array regardless of whether the value was updated or not.
-
-{
-    if (array_valid_index(argument0, argument1)) {
-        argument0[@ argument1] = argument2;
-    }
-
-    return argument0;
-}
-
-
 #define array_swap_positions
 /// @function array_swap_positions(array, position_1, position_2)
-/// @param {array} array			
+/// @param {array_id} array			
 /// @param {int} position_1				
 /// @param {int} position_2
 /// @description Swaps two positions in an array. It does return the array; however, it swaps them in position.
@@ -66,7 +35,7 @@
 
 #define array_copy_shallow
 /// @function array_copy_shallow(array)
-/// @param {array} array		
+/// @param {array_id} array		
 /// @description Copies an array and returns the copied array. You must assign the returned array to a variable for it to work. This is a shallow copy, and does not copy nested levels. If you want to copy nested levels, you array_copy_deep.
 
 {
@@ -79,9 +48,10 @@
     return _new_array;
 }
 
+
 #define array_copy_deep
 /// @function array_copy_deep(array)
-/// @param {array} array
+/// @param {array_id} array
 /// @description Returns a deep copy of the provided array. It will copy over any nested arrays. Note - returns a new array. MUST be assigned to be any use.
 
 {
@@ -101,8 +71,9 @@
 
 
 #define array_add_to_end
-/// @function array_add(array, ...)
-/// @param {array} array			
+/// @function array_add_to_end(array, val1 [, val2, ... max_val])
+/// @param {array_id} array
+/// @param {variable} value_1
 /// @param {variables} ...values			
 /// @description Add variables to the end of an array. It does return the array; however, it will add them to the array itself. 
 
@@ -117,10 +88,11 @@
 
 
 #define array_insert
-/// @function array_insert(id, pos, ...val)
-/// @param {array} id
-/// @param {int} pos
-/// @param {value} ...values
+/// @function array_insert(array, position, val1 [, val2, ... max_val])
+/// @param {array_id} array
+/// @param {int} position
+/// @param {variable} value_1
+/// @param {variables} ...values
 /// @description Inserts the values specified starting at the specified point. It does return the array; however, it will add them to the array itself. 
 
 {
@@ -148,10 +120,10 @@
 
 #define array_delete
 /// @function array_delete(id, position, amount)
-/// @param {array} id
+/// @param {array_id} id
 /// @param {int} position
 /// @param {int} amount
-/// @description Deletes the amount of values specified starting at the specified. Note - returns a new array. MUST be assigned to be any use. Note - due to the way this script works, it will not error out if you use position or amounts outside of the array's range, but it will not work the way you think it will.
+/// @description Deletes the amount of values specified starting at the specified position. Note - returns a new array. MUST be assigned to be any use. Note - due to the way this script works, it will not error out if you use position or amounts outside of the array's range, but it will not work the way you think it will.
 
 {
     var _amount_to_delete, _length, _new_array;
@@ -172,11 +144,13 @@
 
 
 #define array_splice
-/// @function array_splice(array, position, amount_to_delete, ...values)
-/// @param {array} array
+/// @function array_splice(array, position, amount_to_delete, val1 [, val2, ... max_val])
+/// @param {array_id} array
 /// @param {int} position
 /// @param {int} amount_to_delete
-/// @param {value} ...values
+/// @param {variable} value_1
+/// @param {variables} ...values
+/// @description First deletes teh amount of values specified starting at the specified position. Then adds in the new values starting at that position. Note - this will return a new list.
 
 {
     var _array, _position, _amount_to_delete, _amount_to_add, _new_array;
@@ -202,8 +176,10 @@
 
 
 #define array_join
-/// @function array_join(...arrays)
-/// @Param {array} ...arrays
+/// @function array_join(array, array, [...arrays])
+/// @param {array_id} array
+/// @param {array_id} array
+/// @param {array_id} ...arrays
 /// @description Combines multiple arrays into one, and returns the new array. Note - returns a new array. MUST be assigned to be any use.
 
 {
@@ -219,6 +195,35 @@
     }
 
     return _new_array;
+}
+
+
+#define array_combine_strings
+/// @function array_combine_strings(arrays, [seperator])
+/// @param {array_id} array
+/// @param {string} seperator
+/// @description Takes an array of strings and returns one string seperated by the option string of choice
+
+{
+    var _array, _length, _seperator, _new_string;
+    _array = argument[0];
+    _length = array_length_1d(_array);
+    _seperator = "";
+    _new_string = "";
+
+    if (argument_count == 2) {
+        _seperator = argument[1];
+    }
+
+    for (var i = 0; i < _length; i++) {
+        if (i == 0) {
+            _new_string += _array[i];
+        } else {
+            _new_string += _seperator + _array[i];
+        }
+    }
+
+    return _new_string;    
 }
 
 
@@ -242,7 +247,7 @@
 
 #define array_to_list_shallow
 /// @function array_to_list_shallow(array)
-/// @param {array} array
+/// @param {array_id} array
 /// @description Takes an array and returns an list. Note - this function creates and returns a list. This list must be destroyed at some point. Note - this is a shallow copy only. Will not create nested lists.
 
 {
@@ -259,7 +264,7 @@
 
 #define array_to_list_deep
 /// @function array_to_list_deep(array)
-/// @param {array} array
+/// @param {array_id} array
 /// @description Takes an array and returns an list. Note - this function creates and returns an list. This list must be destroyed at some point. Note - this is a deep copy and will create nested lists. This lists must be destroyed as well. Switching ds_list_add with list_add_list will mark all sub lists as lists, allowing for automatic destruction of sub lists when destroying the main list.
 
 {
@@ -280,8 +285,8 @@
 
 #define array_equals_deep
 /// @function array_equals_deep(array, array)
-/// @param {array} array
-/// @param {array} array
+/// @param {array_id} array
+/// @param {array_id} array
 /// @description Returns true if the two arrays contain the same value as each other. Tests against all nested copies.
 
 {
@@ -302,9 +307,31 @@
 }
 
 
+#define array_flatten
+/// @function array_flatten(array)
+/// @param {array_id} array
+/// @description Recursively loops through the provided array and returns a new array the contains the values of the old array without any nesting. Note - will remove any completely empty arrays.  Note - returns a new array. MUST be assigned to be any use.
+
+{
+    var _new_array, _length; 
+    _new_array = [];
+    _length = array_length_1d(argument0);
+    
+    for(var i = 0; i < _length; i++){
+        if(is_array(argument0[i])) {
+            _new_array = array_join(_new_array, array_flatten(argument0[i]));  
+        } else {
+            array_add_to_end(_new_array, argument0[i]);
+        }
+    } 
+
+    return _new_array;
+}
+
+
 #define array_find_index
 /// @function array_find_index(array, value)
-/// @param {array} array
+/// @param {array_id} array
 /// @param {variable} value
 /// @description Returns the first index of the value specified, searching from left to right. Returns -1 if the value is not found.
 
@@ -320,35 +347,76 @@
 }
 
 
-#define array_find_index_non_strict
-/// @function array_find_index_non_strict(array, value)
-/// @param {array} array
+#define array_find_index_last
+/// @function array_find_index_last(array, value)
+/// @param {array_id} array
 /// @param {variable} value
-/// @description Returns the first index of the value specified, searching from left to right. Returns -1 if the value is not found.
+/// @description Returns the last index of the value specified, searching from right to left. Returns -1 if the value is not found.
 
 {
     var _length = array_length_1d(argument0);
-
-    switch (is_array(argument1)) {
-
-        case false:
-            for (var i = 0; i < _length; i++) {
-                if (argument0[i] == argument1) {
-                    return i;
-                }	
-            }
-            break;
-
-        case true:
-            for (var i = 0; i < _length; i++) {
-                if (array_equals_deep(argument0[i], argument1)) {
-                    return i;
-                }	
-            }
-            break;
+    for (var i = array_length_1d(argument0) - 1; i >= 0; i--) {
+        if (argument0[i] == argument1) {
+            return i;
+        }
     }
 
-    return -1;   
+    return -1;    
+}
+
+
+#define array_find_index_custom
+/// @function array_find_index_custom(array, script, [...script_arguments_array])
+/// @param {array_id} array
+/// @param {script_id} script
+/// @param {array} script_arguments_array
+/// @description Returns the first index of the value specified, searching from left to right. Returns -1 if the value is not found.
+
+{
+    var _array, _script_id, _script_arguments_array, _length;
+    _array = argument[0];
+    _script_id = argument[1];
+    _script_arguments_array = [];
+    _length = array_length_1d(_array);
+
+    if (argument_count == 3) {
+        _script_arguments_array = argument[2];        
+    } 
+
+    for (var i = 0; i < _length; i++) {
+        if (script_execute(_script_id, _array[i], _script_arguments_array)) {
+            return i;
+        }
+    }
+
+    return -1;    
+}
+
+
+#define array_find_index_last_custom
+/// @function array_find_index_last_custom(array, script, [...script_arguments_array])
+/// @param {array_id} array
+/// @param {script_id} script
+/// @param {array} script_arguments_array
+/// @description Returns the last index of the value specified, searching from right to left. Returns -1 if the value is not found.
+
+{
+    var _array, _script_id, _script_arguments_array;
+    _array = argument[0];
+    _script_id = argument[1];
+    _script_arguments_array = [];
+
+    if (argument_count == 3) {
+        _script_arguments_array = argument[2];        
+    } 
+
+    for (var i = array_length_1d(_array) - 1; i >= 0; i--) {
+        if (script_execute(_script_id, _array[i], _script_arguments_array)) {
+            return i;
+        }
+    }
+
+    return -1;    
 }
 
 
@@ -374,49 +442,151 @@
 }
 
 
-#define array_accumulate
-/// @function array_accumulate(array)
-/// @param {array} array
-/// @description Returns the total value of all numbers in an array. Note - this script will cause an error if the array contains anything except numbers.
+#define array_find_index_all_custom
+/// @function array_find_index_all_custom(array, script, [...script_arguments_array])
+/// @param {array_id} array
+/// @param {script_id} script
+/// @description Returns an array of all indexs containing the value specified, searching from left to right. Returns an empty array if the value is not found.
 
 {
-    var _length, _accumulator;
-    _length = array_length_1d(argument0);
-    _accumulator = 0;
+    var _array, _script_id, _script_arguments_array, _length;
+    _array = argument[0];
+    _script_id = argument[1];
+    _script_arguments_array = [];
+    _length = array_length_1d(_array);
 
-    for (var i = 0; i < _length; i++) {
-        _accumulator += argument0[i];
-    }
-
-    return _accumulator;    
-}
-
-
-#define array_flatten
-/// @function array_flatten(array)
-/// @param {array} array
-/// @description Recursively loops through the provided array and returns a new array the contains the values of the old array without any nesting. Note - will remove any completely empty arrays.  Note - returns a new array. MUST be assigned to be any use.
-
-{
-    var _new_array, _length; 
-    _new_array = [];
-    _length = array_length_1d(argument0);
-    
-    for(var i = 0; i < _length; i++){
-        if(is_array(argument0[i])) {
-            _new_array = array_join(_new_array, array_flatten(argument0[i]));  
-        } else {
-            array_add_to_end(_new_array, argument0[i]);
-        }
+    if (argument_count == 3) {
+        _script_arguments_array = argument[2];        
     } 
+
+    var _new_array, _counter;
+    _new_array = [];
+    _counter = 0;
+    for (var i = 0; i < _length; i++) {
+        if (script_execute(_script_id, _array[i], _script_arguments_array)) {
+            _new_array[_counter++] = i;
+        }
+    }
 
     return _new_array;
 }
 
 
+#define array_every
+/// @function array_every(array, script, [...script_arguments_array])
+/// @param {array_id} array
+/// @param {script_id} script
+/// @param {array} script_arguments_array
+/// @description Returns true if all values matche.
+
+{
+    var _array, _script_id, _script_arguments_array, _length;
+    _array = argument[0];
+    _script_id = argument[1];
+    _script_arguments_array = [];
+    _length = array_length_1d(_array);
+
+    if (argument_count == 3) {
+        _script_arguments_array = argument[2];        
+    } 
+
+    for (var i = 0; i < _length; i++) {
+        if (!script_execute(_script_id, _array[i], _script_arguments_array)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+#define array_some
+/// @function array_some(array, script, [...script_arguments_array])
+/// @param {array_id} array
+/// @param {script_id} script
+/// @param {array} script_arguments_array
+/// @description Returns true if at least one value matches.
+
+{
+    var _array, _script_id, _script_arguments_array, _length;
+    _array = argument[0];
+    _script_id = argument[1];
+    _script_arguments_array = [];
+    _length = array_length_1d(_array);
+
+    if (argument_count == 3) {
+        _script_arguments_array = argument[2];        
+    } 
+
+    for (var i = 0; i < _length; i++) {
+        if (script_execute(_script_id, _array[i], _script_arguments_array)) {
+            return true;
+        }
+    }
+
+    return false;    
+}
+
+
+#define array_filter
+/// @function array_filter(array, script, [script_arguments_array])
+/// @param {array_id} array
+/// @param {script_id} filter_script
+/// @param {array} script_arguments_array
+/// @description Creates and returns a new array that only has the values from the prior array that meet the requirement of the filter script.
+
+{
+    var _array, _script_id, _script_arguments_array, _length;
+    _array = argument[0];
+    _script_id = argument[1];
+    _script_arguments_array = [];
+    _length = array_length_1d(_array);
+
+    if (argument_count == 3) {
+        _script_arguments_array = argument[2];        
+    } 
+
+    var _new_array = [];
+    var _counter = 0;
+    for (var i = 0; i < array_length_1d(_array); i += 1) {
+        if (script_execute(_script_id, _array[i], _script_arguments_array)) {
+            _new_array[_counter++] = _array[i];
+        }
+    }
+
+    return _new_array;
+}
+
+
+#define array_reduce
+/// @function array_reduce(array, script, [script_arguments_array])
+/// @param {array_id} array
+/// @param {script_id} filter_script
+/// @description Returns the total value of all numbers in an array. Note - this script will cause an error if the array contains anything except numbers.
+
+{
+    var _array, _script_id, _script_arguments_array, _length, _accumulator;
+    _array = argument[0];
+    _script_id = argument[1];
+    _script_arguments_array = [];
+    _length = array_length_1d(_array);
+
+    if (argument_count == 3) {
+        _script_arguments_array = argument[2];        
+    } 
+
+    _accumulator = 0;
+    for (var i = 0; i < _length; i++) {
+        _accumulator += script_execute(_script_id, _array[i], _script_arguments_array);
+    }
+
+    return _accumulator;   
+}
+
+
 #define array_sort
 /// @function array_sort(array, sorting_script)
-/// @param {array} array
+/// @param {array_id} array
 /// @param {script} sorting_script
 /// @description Sorts an array using the sorting script provided. Modifies and eturns the original array. Does not need to be assigned. Uses a simple bubble sort: Time Complexity is O(n^2)
 
@@ -455,32 +625,30 @@
 }
 
 
-#define array_filter
-/// @function array_filter(array, filter_script)
-/// @param {array} array
-/// @param {script} filter_script
-/// @description Creates and returns a new array that only has the values from the prior array that meet the requirement of the filter script.
+#define array_reverse
+/// @function array_reverse(array)
+/// @param {array_id} array
+/// @description Returns the array in reverse order.
 
 {
-    var _new_array, _counter, _length;
-    _new_array = [];
-    _counter = 0;
-    _length = array_length_1d(argument0);
-    for (var i = 0; i < _length; i += 1) {
-        if (script_execute(argument1, argument0[i])) {
-            _new_array[_counter++] = argument0[i];
-        }
+    var _position_1, _position_2, _position_3;
+    _position_1 = 0;
+    _position_2 = array_length_1d(argument0);
+    while (_position_1 < --_position_2) {
+        _position_3 = argument0[_position_1];
+        argument0[_position_1++] = argument0[_position_2];
+        argument0[_position_2] = _position_3;
     }
 
-    return _new_array;
+    return argument0;
 }
 
 
 #define array_for_each
-/// @function array_for_each(array, script, script_arguments_array)
-/// @param {array} array
+/// @function array_for_each(array, script, [script_arguments_array])
+/// @param {array_id} array
 /// @param {scripts} script_id
-/// @param {array} arguments
+/// @param {array} script_arguments_array
 /// @description Performs the script on each element of the array. It does return the array, however, it will add them to the array itself. 
 
 {
@@ -503,14 +671,13 @@
 
 
 #define array_for_each_copy
-/// @function array_for_each_copy(array, script, script_arguments_array)
-/// @param {array} array
+/// @function array_for_each_copy(array, script, [script_arguments_array])
+/// @param {array_id} array
 /// @param {scripts} script_id
-/// @param {array} arguments
+/// @param {array} script_arguments_array
 /// @description Copies the array and performs the script on each element of the copied array. Note - returns a new array. MUST be assigned to be any use.
 
-{
-    
+{   
     var _array, _script_id, _script_arguments_array, _length, _new_array;
     _array = argument[0];
     _script_id = argument[1];

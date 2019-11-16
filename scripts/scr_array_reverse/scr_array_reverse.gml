@@ -1,4 +1,4 @@
-/// @function array_reverse(array)
+/// @function scr_array_reverse(array)
 /// @param {array} array
 /// @description Returns the array in reverse order.
 

@@ -1,11 +1,11 @@
-/// @function array_insert(id, pos, ...val)
-
-/// @param {array} id
-/// @param {int} pos
-/// @param {value} ...values
-
+/// @function scr_array_insert(array, position, val1 [, val2, ... max_val])
+/// @param {array_id} array
+/// @param {int} position
+/// @param {variable} value_1
+/// @param {variables} ...values
 /// @description Deletes the values specified starting at the specified point.
 ///				 Note - returns a new array. MUST be assigned to be any use.
+
 
 //rename arguments for ease of use
 var _array, _pos, _amount, _new_length;

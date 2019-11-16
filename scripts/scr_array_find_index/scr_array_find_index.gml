@@ -1,8 +1,6 @@
-/// @function array_find_index(array, value)
-
-/// @param {array} array
+/// @function scr_array_find_index(array, value)
+/// @param {array_id} array
 /// @param {variable} value
-
 /// @description Returns the first index of the value specified, searching
 ///				 from left to right. Returns -1 if the value is not found.
 

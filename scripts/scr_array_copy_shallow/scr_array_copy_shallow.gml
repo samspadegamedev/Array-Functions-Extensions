@@ -1,10 +1,8 @@
-/// @function array_copy_shallow(array)
-
-/// @param {array} array		
-
-/// @description Copies an array and returns the copied array. You must
-///				 Assign the returned array to a variable for it to work.
-///				 This is a shallow copy, and does not copy nested levels.
+/// @function scr_array_copy_shallow(array)
+/// @param {array_id} array		
+/// @description Copies an array and returns the copied array. 
+///				 You must assign the returned array to a variable for it to work. 
+///				 This is a shallow copy, and does not copy nested levels. 
 ///				 If you want to copy nested levels, you array_copy_deep.
 
 

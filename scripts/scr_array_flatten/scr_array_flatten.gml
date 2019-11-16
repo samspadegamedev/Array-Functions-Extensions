@@ -1,7 +1,5 @@
-/// @function array_flatten(array)
-
-/// @param {array} array
-
+/// @function scr_array_flatten(array)
+/// @param {array_id} array
 /// @description Recursively loops through the provided array and returns a new array
 ///				 the contains the values of the old array without any nesting.
 ///				 Note - will remove any completely empty arrays. 

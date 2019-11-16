@@ -1,4 +1,4 @@
-/// @function array_shuffle(array)
+/// @function scr_array_shuffle(array)
 
 /// @param {array} array
 

@@ -1,10 +1,8 @@
-/// @function array_copy_deep(array)
-
-/// @param {array} array
-
-/// @description Returns a deep copy of the provided array. It will copy over any nested arrays. 
+/// @function scr_array_copy_deep(array)
+/// @param {array_id} array
+/// @description Returns a deep copy of the provided array. 
+///				 It will copy over any nested arrays. 
 ///				 Note - returns a new array. MUST be assigned to be any use.
-
 
 //rename arguments for ease of use
 var _old_array, _new_array;

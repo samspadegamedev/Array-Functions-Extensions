@@ -1,7 +1,5 @@
-/// @function array_to_list_shallow(array)
-
-/// @param {array} array
-
+/// @function scr_array_to_list_shallow(array)
+/// @param {array_id} array
 /// @description Takes an array and returns an list. Note - this function creates
 ///				 and returns an list. This list must be destroyed at some point. 
 ///				 Note - this is a shallow copy only. Will not create nested lists.

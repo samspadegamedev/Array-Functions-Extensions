@@ -1,9 +1,7 @@
 /// @function scr_array_every(array, script, [...script_arguments_array])
-
-/// @param {array} array
+/// @param {array_id} array
 /// @param {script_id} script
 /// @param {array} script_arguments_array
-
 /// @description Returns true if all values matche.
 
 

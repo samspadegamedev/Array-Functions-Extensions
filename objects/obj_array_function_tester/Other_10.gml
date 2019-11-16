@@ -23,51 +23,6 @@ assert_fail(array_valid_index(array, 1), "Valid Index");
 assert_fail(array_valid_index(array, "Hello World"), "Valid Index");
 #endregion
 
-#region ///array_get_safe test
-array = ["Hello World", "Goodbye"];
-assert_equal(array_get_safe(array, 0), "Hello World", "Returned undefined");
-assert_equal(array_get_safe(array, 1), "Goodbye", "Returned undefined");
-assert_equal(array_get_safe(array, -1), undefined, "Didn't return undefined");
-assert_equal(array_get_safe(array, 1.1), undefined, "Didn't return undefined");
-assert_equal(array_get_safe(array, 4), undefined, "Didn't return undefined");
-assert_equal(array_get_safe(array, []), undefined, "Didn't return undefined");
-
-array = [];
-assert_equal(array_get_safe(array, 0), undefined, "Didn't return undefined");
-assert_equal(array_get_safe(array, -1), undefined, "Didn't return undefined");
-assert_equal(array_get_safe(array, 1.1), undefined, "Didn't return undefined");
-assert_equal(array_get_safe(array, 4), undefined, "Didn't return undefined");
-assert_equal(array_get_safe(array, []), undefined, "Didn't return undefined");
-#endregion
-
-#region ///array_set_safe test
-array = ["Hello World", "Goodbye"];
-array_set_safe(array, 0, "Test 1");
-assert(array_equals(["Test 1", "Goodbye"], array), "Arrays arn't equal");
-array_set_safe(array, 1, "Test 2");
-assert(array_equals(["Test 1", "Test 2"], array), "Arrays arn't equal");
-array_set_safe(array, 3, "Test 3");
-assert(array_equals(["Test 1", "Test 2"], array), "Arrays arn't equal");
-array_set_safe(array, [], "Test 3");
-assert(array_equals(["Test 1", "Test 2"], array), "Arrays arn't equal");
-array_set_safe(array, "Hello World", "Test 3");
-assert(array_equals(["Test 1", "Test 2"], array), "Arrays arn't equal");
-
-
-array = [];
-array_set_safe(array, 0, "Test 1");
-assert(array_equals([], array), "Arrays arn't equal");
-array_set_safe(array, 1, "Test 2");
-assert(array_equals([], array), "Arrays arn't equal");
-array_set_safe(array, 3, "Test 3");
-assert(array_equals([], array), "Arrays arn't equal");
-array_set_safe(array, [], "Test 3");
-assert(array_equals([], array), "Arrays arn't equal");
-array_set_safe(array, "Hello World", "Test 3");
-assert(array_equals([], array), "Arrays arn't equal");
-
-#endregion
-
 #region ///array_swap_positions test
 array = [0, 1];
 array_swap_positions(array, 0, 1);
@@ -181,40 +136,40 @@ assert_equal(array_find_index(array, "Goodbye"), -1);
 
 #region ///array_find_index_custom test
 array = [[0, 1, 2], 1, "Hello World", 2, [0, 1, 2], "Hello World", 1];
-assert_equal(scr_array_find_index_custom(array, equals_fuzzy, [1]), 1);
-assert_equal(scr_array_find_index_custom(array, equals_fuzzy, ["Hello World"]), 2);
-assert_equal(scr_array_find_index_custom(array, equals_fuzzy, ["Goodbye"]), -1);
-assert_equal(scr_array_find_index_custom(array, equals_fuzzy, [[0, 1, 2]]), 0);
-assert_equal(scr_array_find_index_custom(array, equals_fuzzy, [[0, 2]]), -1);
+assert_equal(array_find_index_custom(array, equals_fuzzy, [1]), 1);
+assert_equal(array_find_index_custom(array, equals_fuzzy, ["Hello World"]), 2);
+assert_equal(array_find_index_custom(array, equals_fuzzy, ["Goodbye"]), -1);
+assert_equal(array_find_index_custom(array, equals_fuzzy, [[0, 1, 2]]), 0);
+assert_equal(array_find_index_custom(array, equals_fuzzy, [[0, 2]]), -1);
 
 
 array = [];
-assert_equal(scr_array_find_index_custom(array, equals_fuzzy, ["Goodbye"]), -1);
-assert_equal(scr_array_find_index_custom(array, equals_fuzzy, [0, 1, 2]), -1);
+assert_equal(array_find_index_custom(array, equals_fuzzy, ["Goodbye"]), -1);
+assert_equal(array_find_index_custom(array, equals_fuzzy, [0, 1, 2]), -1);
 #endregion
 
 #region ///scr_array_find_index_last test
 array = [0, 1, "Hello World", 1, 3, 4, 5];
-assert_equal(scr_array_find_index_last(array, 1), 3);
-assert_equal(scr_array_find_index_last(array, "Goodbye"), -1);
+assert_equal(array_find_index_last(array, 1), 3);
+assert_equal(array_find_index_last(array, "Goodbye"), -1);
 
 
 array = [];
-assert_equal(scr_array_find_index_last(array, "Goodbye"), -1);
+assert_equal(array_find_index_last(array, "Goodbye"), -1);
 #endregion
 
 #region ///array_find_index_last_custom test
 array = [[0, 1, 2], 1, "Hello World", 2, [0, 1, 2], "Hello World", 1];
-assert_equal(scr_array_find_index_last_custom(array, equals_fuzzy, [1]), 6);
-assert_equal(scr_array_find_index_last_custom(array, equals_fuzzy, ["Hello World"]), 5);
-assert_equal(scr_array_find_index_last_custom(array, equals_fuzzy, ["Goodbye"]), -1);
-assert_equal(scr_array_find_index_last_custom(array, equals_fuzzy, [[0, 1, 2]]), 4);
-assert_equal(scr_array_find_index_last_custom(array, equals_fuzzy, [[0, 2]]), -1);
+assert_equal(array_find_index_last_custom(array, equals_fuzzy, [1]), 6);
+assert_equal(array_find_index_last_custom(array, equals_fuzzy, ["Hello World"]), 5);
+assert_equal(array_find_index_last_custom(array, equals_fuzzy, ["Goodbye"]), -1);
+assert_equal(array_find_index_last_custom(array, equals_fuzzy, [[0, 1, 2]]), 4);
+assert_equal(array_find_index_last_custom(array, equals_fuzzy, [[0, 2]]), -1);
 
 
 array = [];
-assert_equal(scr_array_find_index_last_custom(array, equals_fuzzy, ["Goodbye"]), -1);
-assert_equal(scr_array_find_index_last_custom(array, equals_fuzzy, [0, 1, 2]), -1);
+assert_equal(array_find_index_last_custom(array, equals_fuzzy, ["Goodbye"]), -1);
+assert_equal(array_find_index_last_custom(array, equals_fuzzy, [0, 1, 2]), -1);
 #endregion
 
 #region ///array_find_index_all test
@@ -230,31 +185,21 @@ assert_equal(array_find_index_all(array, "Hello World"), []);
 
 #region ///array_find_index_all test
 array = [0, 1, "Hello World", 1, 3, 1, 5];
-assert_equal(scr_array_find_index_all_custom(array, equals_fuzzy, [1]), [1, 3, 5]);
-assert_equal(scr_array_find_index_all_custom(array, equals_fuzzy, ["Hello World"]), [2]);
-assert_equal(scr_array_find_index_all_custom(array, equals_fuzzy, ["Goodbye"]), []);
+assert_equal(array_find_index_all_custom(array, equals_fuzzy, [1]), [1, 3, 5]);
+assert_equal(array_find_index_all_custom(array, equals_fuzzy, ["Hello World"]), [2]);
+assert_equal(array_find_index_all_custom(array, equals_fuzzy, ["Goodbye"]), []);
 
 
 array = [];
-assert_equal(scr_array_find_index_all_custom(array, equals_fuzzy, ["Hello World"]), []);
-#endregion
-
-#region ///array_find_index_non_strict test
-array = [0, 1, "Hello World", 2, [0, 1, 2], 4, 5];
-assert_equal(array_find_index_non_strict(array, [0, 1, 2]), 4);
-assert_equal(array_find_index_non_strict(array, [0, 2]), -1);
-
-
-array = [];
-assert_equal(array_find_index_non_strict(array, [0, 1, 2]), -1);
+assert_equal(array_find_index_all_custom(array, equals_fuzzy, ["Hello World"]), []);
 #endregion
 
 #region ///array_accumulate test
 array = [0, 1, 2, 3, 4, 5];
-assert_equal(scr_array_reduce(array, accumulate_num), 15);
-assert_equal(scr_array_reduce(array, accumulate_num_greater_than, [3]), 9);
+assert_equal(array_reduce(array, accumulate_num), 15);
+assert_equal(array_reduce(array, accumulate_num_greater_than, [3]), 9);
 array = [];
-assert_equal(scr_array_reduce(array, accumulate_num_greater_than, [3]), 0);
+assert_equal(array_reduce(array, accumulate_num_greater_than, [3]), 0);
 #endregion
 
 #region ///array_join test
@@ -277,10 +222,10 @@ assert(array_equals([9, 10, "Hello World", 0, 1, 2, 3, 4, 5, 6, 7, 8], array_joi
 
 #region ///array_join test
 array = [];
-assert_equal(scr_array_combine_strings(array), "");
+assert_equal(array_combine_strings(array), "");
 array = ["Hello World", "Goodbye"];
-assert_equal(scr_array_combine_strings(array), "Hello WorldGoodbye");
-assert_equal(scr_array_combine_strings(array, ", "), "Hello World, Goodbye");
+assert_equal(array_combine_strings(array), "Hello WorldGoodbye");
+assert_equal(array_combine_strings(array, ", "), "Hello World, Goodbye");
 #endregion
 
 #region ///array_flatten test
@@ -314,38 +259,38 @@ assert(array_equals([], array_reverse(array)), "Arrays arn't equal");
 
 #region ///array_filter test
 array = [0, 1, 2, 3, 4, 5, "Hello World", "Goodbye"];
-assert(array_equals([0, 2, 4], scr_array_filter(array, filter_is_even_safe)), "Arrays arn't equal"); 
-assert(array_equals(["Hello World", "Goodbye"], scr_array_filter(array, filter_is_string_safe)), "Arrays arn't equal"); 
-assert(array_equals([0, 1, 2, 3, 4, 5], scr_array_filter(array, is_num)), "Arrays arn't equal"); 
+assert(array_equals([0, 2, 4], array_filter(array, filter_is_even_safe)), "Arrays arn't equal"); 
+assert(array_equals(["Hello World", "Goodbye"], array_filter(array, filter_is_string_safe)), "Arrays arn't equal"); 
+assert(array_equals([0, 1, 2, 3, 4, 5], array_filter(array, is_num)), "Arrays arn't equal"); 
 array = [0, 1, 2, 3, 4, 5];
-assert(array_equals([3, 4, 5], scr_array_filter(array, is_greater_than, [2])), "Arrays arn't equal"); 
+assert(array_equals([3, 4, 5], array_filter(array, is_greater_than, [2])), "Arrays arn't equal"); 
 
 #endregion
 
 #region //array_every Test
 array = [0, 1, 2];
-assert(scr_array_every(array, is_num));
+assert(array_every(array, is_num));
 array = [0, 1, 2, "Hello World"];
-assert_fail(scr_array_every(array, is_num));
+assert_fail(array_every(array, is_num));
 
 array = [0.5, 1, 2];
-assert(scr_array_every(array, is_greater_than, [0]));
-assert_fail(scr_array_every(array, is_greater_than, [1]));
+assert(array_every(array, is_greater_than, [0]));
+assert_fail(array_every(array, is_greater_than, [1]));
 #endregion
 
 #region //array_some Test
 array = [0, 1, 2];
-assert(scr_array_some(array, is_num));
+assert(array_some(array, is_num));
 array = [0, 1, 2, "Hello World"];
-assert(scr_array_some(array, is_num));
+assert(array_some(array, is_num));
 array = ["Hello World", "Goodbye"];
-assert_fail(scr_array_some(array, is_num));
+assert_fail(array_some(array, is_num));
 array = [];
-assert_fail(scr_array_some(array, is_num));
+assert_fail(array_some(array, is_num));
 
 array = [0.5, 1, 2];
-assert(scr_array_some(array, is_greater_than, [0]));
-assert_fail(scr_array_some(array, is_greater_than, [5]));
+assert(array_some(array, is_greater_than, [0]));
+assert_fail(array_some(array, is_greater_than, [5]));
 #endregion
 
 #region ///array_for_each test

@@ -1,9 +1,7 @@
 /// @function scr_array_find_index_custom(array, script, [...script_arguments_array])
-
-/// @param {array} array
+/// @param {array_id} array
 /// @param {script_id} script
 /// @param {array} script_arguments_array
-
 /// @description Returns the first index of the value specified, searching
 ///				 from left to right. Returns -1 if the value is not found.
 

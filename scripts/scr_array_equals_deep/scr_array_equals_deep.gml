@@ -1,8 +1,6 @@
-/// @function array_equals_deep(array, array)
-
-/// @param {array} array
-/// @param {array} array
-
+/// @function scr_array_equals_deep(array, array)
+/// @param {array_id} array
+/// @param {array_id} array
 /// @description Returns true if the two arrays are equal to each other
 ///				 Tests against all nested copies.
 

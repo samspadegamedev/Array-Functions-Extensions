@@ -1,9 +1,7 @@
-/// @function array_valid_index(array, index)
-
-/// @param {arra} array
+/// @function scr_array_valid_index(array, index)
+/// @param {array_id} array
 /// @param {int} index
-
-/// @description Returns true if the index is a valid index for the array.
+/// @description Returns true if the index is a valid index for the array. 
 ///				 Otherwise returns false. 
 
 

@@ -1,8 +1,7 @@
-/// @function array_filter(array, filter_script)
-
-/// @param {array} array
-/// @param {script} filter_script
-
+/// @function scr_array_filter(array, script, [script_arguments_array])
+/// @param {array_id} array
+/// @param {script_id} filter_script
+/// @param {array} script_arguments_array
 /// @description Creates and returns a new array that only has the values
 ///				 from the prior array that meet the requirement of the filter script.
 

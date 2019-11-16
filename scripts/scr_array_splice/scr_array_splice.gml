@@ -1,11 +1,13 @@
-/// @function array_splice(array, pos, delete_amount, ...values)
-
-/// @param {array} array
-/// @param {int} pos
-/// @param {int} amount
-/// @param {value} ...values
-
-/// @description
+/// @function scr_array_splice(array, position, amount_to_delete, val1 [, val2, ... max_val])
+/// @param {array_id} array
+/// @param {int} position
+/// @param {int} amount_to_delete
+/// @param {variable} value_1
+/// @param {variables} ...values
+/// @description First deletes teh amount of values specified starting
+///				 at the specified position. Then adds in the new values
+///				 starting at that position. Note - this will return a 
+///				 new list.
 
 var _array, _pos, _delete_amount, _add_amount, _new_array;
 _array = argument[0];

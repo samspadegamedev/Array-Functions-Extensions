@@ -1,9 +1,10 @@
-/// @function array_join(...arrays)
-
-/// @Param {array} ...arrays
-
-/// @description Combines multiple arrays into one, and returns the new array.
-///				 Note - returns a new array. MUST be assigned to be any use.
+/// @function scr_array_join(array, array, [...arrays])
+/// @param {array_id} array
+/// @param {array_id} array
+/// @param {array_id} ...arrays
+/// @description Combines multiple arrays into one, and returns 
+///				 the new array. Note - returns a new array. 
+///				 MUST be assigned to be any use.
 
 
 //rename arguments for ease of use

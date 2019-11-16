@@ -1,8 +1,6 @@
-/// @function array_sort(array, sorting_script)
-
-/// @param {array} array
+/// @function scr_array_sort(array, sorting_script)
+/// @param {array_id} array
 /// @param {script} sorting_script
-
 /// @description Sorts an array using the sorting script provided. Modifies
 ///				 and eturns the original array. Does not need to be assigned.
 

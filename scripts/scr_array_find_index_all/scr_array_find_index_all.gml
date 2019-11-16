@@ -1,8 +1,6 @@
-/// @function array_find_index_all(array, value)
-
-/// @param {array} array
+/// @function scr_array_find_index_all(array, value)
+/// @param {array_id} array
 /// @param {variable} value
-
 /// @description Returns an array of all indexs containing the value specified, searching
 ///				 from left to right. Returns an empty array if the value is not found.
 

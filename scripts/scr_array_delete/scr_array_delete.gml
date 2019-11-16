@@ -1,9 +1,7 @@
-/// @function array_delete(id, position, amount)
-
-/// @param {array} id
+/// @function scr_array_delete(id, position, amount)
+/// @param {array_id} id
 /// @param {int} position
 /// @param {int} amount
-
 /// @description Deletes the amount of values specified starting at the specified.
 ///				 Note - returns a new array. MUST be assigned to be any use.
 ///				 Note - due to the way this script works, it will not error out if

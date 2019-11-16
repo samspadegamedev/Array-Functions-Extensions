@@ -1,7 +1,8 @@
 /// @function array_combine_strings(arrays, [seperator])
-/// @param {array} array
+/// @param {array_id} array
 /// @param {string} seperator
-/// @description Takes an array of strings and returns one string seperated by the option string of choice
+/// @description Takes an array of strings and returns 
+///				 one string seperated by the option string of choice
 
 //rename arguments for ease of use
 var _array, _length, _seperator, _new_string;

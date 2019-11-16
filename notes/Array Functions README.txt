@@ -17,32 +17,47 @@ You can find out more about these functions in the manual. Some of them are used
 inside of the custom array functions.
 
 The following is a list of the added functions:
+
+EXTENSION SCRIPTS
 - array_valid_index
-- array_get_safe
-- array_set_safe
 - array_swap_positions
 - array_copy_shallow			
 - array_copy_deep	
-- array_add					
+- array_add_to_end					
 - array_insert				
 - array_delete				
-- array_splice				
-- array_find_index			
-- array_find_index_non_strict			
-- array_find_index_all
-- array_accumulate	
+- array_splice	
 - array_join	
-- array_shuffle			
-- array_sort										
-- array_filter				
-- array_for_each_copy					
-- array_for_each			
-- array_flatten					
+- array_combine_strings
 - array_to_list_shallow			
 - array_to_list_deep		
 - list_to_array_shallow			
-- list_to_array_deep		
 - array_equals_deep
+- array_flatten	
+- array_find_index			
+- array_find_index_custom	
+- array_find_index_last			
+- array_find_index_last_custom	
+- array_find_index_all
+- array_find_index_all_custom
+- array_every
+- array_some
+- array_filter				
+- array_reduce	
+- array_sort		
+- array_shuffle			
+- array_reverse
+- array_for_each_copy					
+- array_for_each					
+
+HELPER SCRIPT TEMPLATES
+- callback_template
+- sort_template
+
+SORT SCRIPT TEMPLATES
+- sort_alphabetical_safe
+- sort_ascending
+- sort_ascending
 
 
 NOTES ABOUT SCRIPTS
@@ -55,18 +70,28 @@ I have not performanced tested any of the scripts. And in general, if choosing b
 easy to understand but more verbose version or a single line version, when with the more
 verbose version for ease of understanding and debugging.
 
+Some of the array functions included in the extension take helper scripts. There are two
+types of helper scripts. The first type is the sort script. A template has been included
+along with several of the most basic sorts. You can write your own sort scripts and pass
+the script into the array_sort function. The second type of script is more complicated.
+The callback script is used for:
+- array_find_index_custom
+- array_find_index_last_custom
+- array_find_index_all_custom
+- array_every
+- array_some
+- array_filter
+- array_reduce
+- array_for_each
+- array_for_each_copy
 
-QUESTIONS
-There's no way to set a value in an empty array with array_set_safe. I think this should 
-be the expected result. But I will think about it.
+Functions that use callback scripts take the script and option arguments. All arguments
+must be passed as an array (this is necessary because script_execute doesn't allow variable
+amount of arguments to be passed to it). Callback scripts therefore must accept all arguments
+beyond the value being passed into it as an array and work with those arguments as an array.
+See the github repo for some basic examples. 
 
-array_set_safe accepts true and false (0 and 1) as valid indexs assuming the array has a 
-length of 0 or 1. This seems like an issue with array_valid_index which I should double
-check.
 
-array_insert can accept a position larger than its size. Filling the blanks with zeros. 
-How to handle some of the strange inputs with inserting and deleint? Throw errors or do the 
-best possible? 
 
 
 

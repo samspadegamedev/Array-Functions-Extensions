@@ -1,7 +1,5 @@
-/// @function array_accumulate(array)
-
-/// @param {array} array
-
+/// @function scr_array_reduce(array)
+/// @param {array_id} array
 /// @description Returns the total value of all numbers in an array. Note - this script
 ///				 will cause an error if the array contains anything except numbers.
 

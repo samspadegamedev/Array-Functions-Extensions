@@ -1,7 +1,5 @@
-/// @function array_to_list_shallow(list)
-
+/// @function scr_array_to_list_shallow(list)
 /// @param {ds_list} list
-
 /// @description Takes a list and returns an array. Note - this function does
 ///				 not destroy the list. Note - This is a shallow copy.
 

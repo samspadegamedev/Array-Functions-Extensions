@@ -46,7 +46,7 @@
                         
                     ],
                     "externalName": "array_add_to_end",
-                    "help": "array_add_to_end(array, ...)",
+                    "help": "array_add_to_end(array, val1 [, val2, ... max_val])",
                     "hidden": false,
                     "kind": 2,
                     "name": "array_add_to_end",
@@ -69,44 +69,13 @@
                     "returnType": 2
                 },
                 {
-                    "id": "5d6c70de-9a64-4f1b-833c-b2188e47e158",
-                    "modelName": "GMExtensionFunction",
-                    "mvc": "1.0",
-                    "argCount": 0,
-                    "args": [
-                        2,
-                        2
-                    ],
-                    "externalName": "array_get_safe",
-                    "help": "array_get_safe(array, index)",
-                    "hidden": false,
-                    "kind": 2,
-                    "name": "array_get_safe",
-                    "returnType": 2
-                },
-                {
-                    "id": "c00bde79-9ce6-4ab2-b933-a1ea23402e99",
-                    "modelName": "GMExtensionFunction",
-                    "mvc": "1.0",
-                    "argCount": 0,
-                    "args": [
-                        2,
-                        2,
-                        2
-                    ],
-                    "externalName": "array_set_safe",
-                    "help": "array_get_safe(array, index, value)",
-                    "hidden": false,
-                    "kind": 2,
-                    "name": "array_set_safe",
-                    "returnType": 2
-                },
-                {
                     "id": "0709b13e-f6c1-4371-a656-3560c5a798cd",
                     "modelName": "GMExtensionFunction",
                     "mvc": "1.0",
                     "argCount": 0,
                     "args": [
+                        2,
+                        2,
                         2
                     ],
                     "externalName": "array_swap_positions",
@@ -155,7 +124,7 @@
                         
                     ],
                     "externalName": "array_insert",
-                    "help": "array_insert(id, pos, ...val)",
+                    "help": "array_insert(array, position, val1 [, val2, ... max_val])",
                     "hidden": false,
                     "kind": 2,
                     "name": "array_insert",
@@ -187,7 +156,7 @@
                         
                     ],
                     "externalName": "array_splice",
-                    "help": "array_splice(array, position, amount_to_delete, ...values)",
+                    "help": "array_splice(array, position, amount_to_delete, val1 [, val2, ... max_val])",
                     "hidden": false,
                     "kind": 2,
                     "name": "array_splice",
@@ -286,22 +255,6 @@
                     "returnType": 2
                 },
                 {
-                    "id": "805948d0-fbd8-40d3-9763-7259253dd386",
-                    "modelName": "GMExtensionFunction",
-                    "mvc": "1.0",
-                    "argCount": 0,
-                    "args": [
-                        2,
-                        2
-                    ],
-                    "externalName": "array_find_index_non_strict",
-                    "help": "array_find_index_non_strict(array, value)",
-                    "hidden": false,
-                    "kind": 2,
-                    "name": "array_find_index_non_strict",
-                    "returnType": 2
-                },
-                {
                     "id": "ca8447c6-4e8e-4d5b-8e06-9880a18ada41",
                     "modelName": "GMExtensionFunction",
                     "mvc": "1.0",
@@ -315,21 +268,6 @@
                     "hidden": false,
                     "kind": 2,
                     "name": "array_find_index_all",
-                    "returnType": 2
-                },
-                {
-                    "id": "e231ef04-5c46-47e2-b95b-1e45fdbcb314",
-                    "modelName": "GMExtensionFunction",
-                    "mvc": "1.0",
-                    "argCount": 0,
-                    "args": [
-                        2
-                    ],
-                    "externalName": "array_accumulate",
-                    "help": "array_accumulate(array)",
-                    "hidden": false,
-                    "kind": 2,
-                    "name": "array_accumulate",
                     "returnType": 2
                 },
                 {
@@ -382,13 +320,12 @@
                     "id": "42dca1d6-6fa6-4ef7-a4b6-54c8f86a4b92",
                     "modelName": "GMExtensionFunction",
                     "mvc": "1.0",
-                    "argCount": 0,
+                    "argCount": -1,
                     "args": [
-                        2,
-                        2
+                        
                     ],
                     "externalName": "array_filter",
-                    "help": "array_filter(array, filter_script)",
+                    "help": "array_filter(array, script, [script_arguments_array])",
                     "hidden": false,
                     "kind": 2,
                     "name": "array_filter",
@@ -398,14 +335,12 @@
                     "id": "814fce20-8b34-41a5-b182-f40094149bdd",
                     "modelName": "GMExtensionFunction",
                     "mvc": "1.0",
-                    "argCount": 0,
+                    "argCount": -1,
                     "args": [
-                        2,
-                        2,
-                        2
+                        
                     ],
                     "externalName": "array_for_each",
-                    "help": "array_for_each(array, script, script_arguments_array)",
+                    "help": "array_for_each(array, script, [script_arguments_array])",
                     "hidden": false,
                     "kind": 2,
                     "name": "array_for_each",
@@ -415,17 +350,151 @@
                     "id": "2a31c0e9-238e-4893-ab93-9beacff53514",
                     "modelName": "GMExtensionFunction",
                     "mvc": "1.0",
-                    "argCount": 0,
+                    "argCount": -1,
                     "args": [
-                        2,
-                        2,
-                        2
+                        
                     ],
                     "externalName": "array_for_each_copy",
-                    "help": "array_for_each_copy(array, script, script_arguments_array)",
+                    "help": "array_for_each_copy(array, script, [script_arguments_array])",
                     "hidden": false,
                     "kind": 2,
                     "name": "array_for_each_copy",
+                    "returnType": 2
+                },
+                {
+                    "id": "9b5dbdef-83a8-4b33-9962-c00a5be88055",
+                    "modelName": "GMExtensionFunction",
+                    "mvc": "1.0",
+                    "argCount": -1,
+                    "args": [
+                        
+                    ],
+                    "externalName": "array_combine_strings",
+                    "help": "array_combine_strings(arrays, [seperator])",
+                    "hidden": false,
+                    "kind": 2,
+                    "name": "array_combine_strings",
+                    "returnType": 1
+                },
+                {
+                    "id": "f9b221c6-6c4f-4cbf-aaee-a1cc629691ec",
+                    "modelName": "GMExtensionFunction",
+                    "mvc": "1.0",
+                    "argCount": -1,
+                    "args": [
+                        2,
+                        2
+                    ],
+                    "externalName": "array_find_index_last",
+                    "help": "array_find_index_last(array, value)",
+                    "hidden": false,
+                    "kind": 2,
+                    "name": "array_find_index_last",
+                    "returnType": 2
+                },
+                {
+                    "id": "739c45f5-a0a6-42b7-9dc4-a1be18ff9069",
+                    "modelName": "GMExtensionFunction",
+                    "mvc": "1.0",
+                    "argCount": -1,
+                    "args": [
+                        
+                    ],
+                    "externalName": "array_find_index_custom",
+                    "help": "array_find_index_custom(array, script, [...script_arguments_array])",
+                    "hidden": false,
+                    "kind": 2,
+                    "name": "array_find_index_custom",
+                    "returnType": 2
+                },
+                {
+                    "id": "4823e7eb-7f09-49e4-9ee5-4b0d3ff8a374",
+                    "modelName": "GMExtensionFunction",
+                    "mvc": "1.0",
+                    "argCount": -1,
+                    "args": [
+                        
+                    ],
+                    "externalName": "array_find_index_last_custom",
+                    "help": "array_find_index_last_custom(array, script, [...script_arguments_array])",
+                    "hidden": false,
+                    "kind": 2,
+                    "name": "array_find_index_last_custom",
+                    "returnType": 2
+                },
+                {
+                    "id": "4e2cc07c-70c7-4422-a6ab-f2adcb5e945e",
+                    "modelName": "GMExtensionFunction",
+                    "mvc": "1.0",
+                    "argCount": -1,
+                    "args": [
+                        
+                    ],
+                    "externalName": "array_find_index_all_custom",
+                    "help": "array_find_index_all_custom(array, script, [...script_arguments_array])",
+                    "hidden": false,
+                    "kind": 2,
+                    "name": "array_find_index_all_custom",
+                    "returnType": 2
+                },
+                {
+                    "id": "8415b407-3f75-4e4b-8f53-9f0d91f1a881",
+                    "modelName": "GMExtensionFunction",
+                    "mvc": "1.0",
+                    "argCount": -1,
+                    "args": [
+                        
+                    ],
+                    "externalName": "array_every",
+                    "help": "array_every(array, script, [...script_arguments_array])",
+                    "hidden": false,
+                    "kind": 2,
+                    "name": "array_every",
+                    "returnType": 2
+                },
+                {
+                    "id": "704011c7-4b0f-4ec8-bbc5-807a3b113f21",
+                    "modelName": "GMExtensionFunction",
+                    "mvc": "1.0",
+                    "argCount": -1,
+                    "args": [
+                        
+                    ],
+                    "externalName": "array_some",
+                    "help": "array_some(array, script, [...script_arguments_array])",
+                    "hidden": false,
+                    "kind": 2,
+                    "name": "array_some",
+                    "returnType": 2
+                },
+                {
+                    "id": "5a3e3727-4af9-4503-856a-0c8d06cdac44",
+                    "modelName": "GMExtensionFunction",
+                    "mvc": "1.0",
+                    "argCount": -1,
+                    "args": [
+                        
+                    ],
+                    "externalName": "array_reduce",
+                    "help": "array_reduce(array, script, [script_arguments_array])",
+                    "hidden": false,
+                    "kind": 2,
+                    "name": "array_reduce",
+                    "returnType": 2
+                },
+                {
+                    "id": "356131c8-0bbd-45db-bb76-1ae529671069",
+                    "modelName": "GMExtensionFunction",
+                    "mvc": "1.0",
+                    "argCount": -1,
+                    "args": [
+                        2
+                    ],
+                    "externalName": "array_reverse",
+                    "help": "array_reverse(array)",
+                    "hidden": false,
+                    "kind": 2,
+                    "name": "array_reverse",
                     "returnType": 2
                 }
             ],
@@ -433,8 +502,6 @@
             "kind": 2,
             "order": [
                 "d45696df-dcbd-4207-8edf-29cccff9c576",
-                "5d6c70de-9a64-4f1b-833c-b2188e47e158",
-                "c00bde79-9ce6-4ab2-b933-a1ea23402e99",
                 "0709b13e-f6c1-4371-a656-3560c5a798cd",
                 "7c5880dd-3c63-4a9b-b9a8-8650288a82f4",
                 "5fe9fead-d62b-4651-bf0e-cb1fb5d2bf71",
@@ -443,20 +510,27 @@
                 "6fbb2b71-45a0-4239-9891-ff98aae3921d",
                 "9e2df9f8-41c5-44f5-bad6-127099a191c6",
                 "58ee25a0-50ba-4f13-9084-bc962f607540",
+                "9b5dbdef-83a8-4b33-9962-c00a5be88055",
                 "3e39df2e-92fb-45de-9e36-ac4a88ac1e49",
                 "375d197a-6c77-4d24-b5f1-7ea7c352fccc",
                 "b8d38b6d-58d1-4b9d-8e4f-c27463ee2325",
                 "07c2709f-5be4-40fe-bb44-d620b04c40ca",
-                "95f8a56e-dff3-45ac-991c-67e129c6c579",
-                "805948d0-fbd8-40d3-9763-7259253dd386",
-                "ca8447c6-4e8e-4d5b-8e06-9880a18ada41",
-                "e231ef04-5c46-47e2-b95b-1e45fdbcb314",
                 "f271c2a4-6582-4e9e-b699-2b1c0010ee79",
+                "95f8a56e-dff3-45ac-991c-67e129c6c579",
+                "f9b221c6-6c4f-4cbf-aaee-a1cc629691ec",
+                "739c45f5-a0a6-42b7-9dc4-a1be18ff9069",
+                "4823e7eb-7f09-49e4-9ee5-4b0d3ff8a374",
+                "ca8447c6-4e8e-4d5b-8e06-9880a18ada41",
+                "4e2cc07c-70c7-4422-a6ab-f2adcb5e945e",
+                "8415b407-3f75-4e4b-8f53-9f0d91f1a881",
+                "704011c7-4b0f-4ec8-bbc5-807a3b113f21",
+                "42dca1d6-6fa6-4ef7-a4b6-54c8f86a4b92",
+                "5a3e3727-4af9-4503-856a-0c8d06cdac44",
                 "582b414e-30d4-4b4a-97e5-7c95bc8a7e28",
                 "42453927-1907-4385-92c9-f0f11935e1a1",
-                "42dca1d6-6fa6-4ef7-a4b6-54c8f86a4b92",
                 "814fce20-8b34-41a5-b182-f40094149bdd",
-                "2a31c0e9-238e-4893-ab93-9beacff53514"
+                "2a31c0e9-238e-4893-ab93-9beacff53514",
+                "356131c8-0bbd-45db-bb76-1ae529671069"
             ],
             "origname": "",
             "uncompress": false
