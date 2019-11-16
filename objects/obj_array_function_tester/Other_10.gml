@@ -193,14 +193,14 @@ assert_equal(scr_array_find_index_custom(array, equals_fuzzy, ["Goodbye"]), -1);
 assert_equal(scr_array_find_index_custom(array, equals_fuzzy, [0, 1, 2]), -1);
 #endregion
 
-#region ///array_find_index_last test
+#region ///scr_array_find_index_last test
 array = [0, 1, "Hello World", 1, 3, 4, 5];
-assert_equal(array_find_index_last(array, 1), 3);
-assert_equal(array_find_index_last(array, "Goodbye"), -1);
+assert_equal(scr_array_find_index_last(array, 1), 3);
+assert_equal(scr_array_find_index_last(array, "Goodbye"), -1);
 
 
 array = [];
-assert_equal(array_find_index_last(array, "Goodbye"), -1);
+assert_equal(scr_array_find_index_last(array, "Goodbye"), -1);
 #endregion
 
 #region ///array_find_index_last_custom test
@@ -273,6 +273,14 @@ array_c = [9, 10, "Hello World"];
 assert(array_equals([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Hello World"], array_join(array_a, array_b, array_c)), "Arrays arn't equal"); 
 assert(array_equals([9, 10, "Hello World", 0, 1, 2, 3, 4, 5, 6, 7, 8], array_join(array_c, array_a, array_b)), "Arrays arn't equal"); 
 
+#endregion
+
+#region ///array_join test
+array = [];
+assert_equal(scr_array_combine_strings(array), "");
+array = ["Hello World", "Goodbye"];
+assert_equal(scr_array_combine_strings(array), "Hello WorldGoodbye");
+assert_equal(scr_array_combine_strings(array, ", "), "Hello World, Goodbye");
 #endregion
 
 #region ///array_flatten test

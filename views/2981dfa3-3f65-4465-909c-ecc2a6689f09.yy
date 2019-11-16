@@ -13,6 +13,7 @@
         "4c54ba6b-c67e-4ed1-8fb7-ce0bff9c067f",
         "93a3126c-5f38-4a75-8c43-a6a216a968f0",
         "eedaacf6-0498-4836-b748-e3c291485e22",
+        "57168fe1-8268-433f-9fdc-34e07173efe8",
         "1cf7042e-cd6f-451c-a77a-4d7befc2fb87",
         "6f6c7d6e-30b4-47a0-b6c9-755a295f97fd",
         "18a31691-80d4-477f-9588-cad40d26cee5",
@@ -33,8 +34,8 @@
         "079a81cd-4972-45bd-8d44-0ceffbcb772e",
         "8f12b034-706f-4c56-9985-fe0c7dba86a0",
         "6c425417-d82a-4c5c-a7dc-25fbabd58ff5",
-        "3b7fef3e-76b6-436b-b0d9-8f58c012f992",
-        "b6566e39-c29d-4d5e-99d5-2e3a81c66a12"
+        "b6566e39-c29d-4d5e-99d5-2e3a81c66a12",
+        "3b7fef3e-76b6-436b-b0d9-8f58c012f992"
     ],
     "filterType": "GMScript",
     "folderName": "Array Functions",
