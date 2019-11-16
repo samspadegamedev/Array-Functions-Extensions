@@ -11,7 +11,17 @@ _scrit_arguments_array = argument1;
 #endregion
 
 //do something here
+switch (is_array(_scrit_arguments_array[0])) {
+	
+	case false:
+		return _scrit_arguments_array[0] == _value;
+		break;
+		
+	case true:
+		return array_equals_deep(_scrit_arguments_array[0], _value);
+		break;
+}
 
 
-//return something
-return undefined;
+//return false as fail safe
+return false;

@@ -10,8 +10,4 @@ _value = argument0;
 _scrit_arguments_array = argument1;
 #endregion
 
-//do something here
-
-
-//return something
-return undefined;
+return is_real(_value);
