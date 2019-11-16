@@ -7,14 +7,19 @@
 
 
 //rename arguments for ease of use
-var _array, _length, _accumulator;
-_array = argument0;
+var _array, _script_id, _script_arguments_array, _length, _accumulator;
+_array = argument[0];
+_script_id = argument[1];
+_script_arguments_array = [];
 _length = array_length_1d(_array);
-_accumulator = 0;
 
-//loop through array and accumulate total
+if (argument_count == 3) {
+    _script_arguments_array = argument[2];        
+} 
+
+_accumulator = 0;
 for (var i = 0; i < _length; i++) {
-	_accumulator += _array[i];
+	_accumulator += script_execute(_script_id, _array[i], _script_arguments_array);
 }
 
 //return total

@@ -8,16 +8,22 @@
 
 
 //rename arguments for ease of use
-var _array, _script;
-_array = argument0;
-_script = argument1;
+var _array, _script_id, _script_arguments_array, _length;
+_array = argument[0];
+_script_id = argument[1];
+_script_arguments_array = [];
+_length = array_length_1d(_array);
+
+if (argument_count == 3) {
+    _script_arguments_array = argument[2];        
+} 
 
 //create an new empty array and add only the values that 
 //meet the filter_script test
 var _new_array = [];
 var _counter = 0;
 for (var i = 0; i < array_length_1d(_array); i += 1) {
-	if (script_execute(_script, _array[i])) {
+	if (script_execute(_script_id, _array[i], _script_arguments_array)) {
 		_new_array[_counter++] = _array[i];
 	}
 }
