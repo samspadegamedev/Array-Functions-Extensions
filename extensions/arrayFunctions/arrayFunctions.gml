@@ -484,11 +484,21 @@
 /// @description Performs the script on each element of the array. It does return the array, however, it will add them to the array itself. 
 
 {
-    for (var i = 0; i < array_length_1d(argument0); i++) {
-        argument0[@ i] = script_execute(argument1, argument0[i], argument2);
+    var _array, _script_id, _script_arguments_array, _length;
+    _array = argument[0];
+    _script_id = argument[1];
+    _script_arguments_array = [];
+    _length = array_length_1d(_array);
+    
+    if (argument_count == 3) {
+        _script_arguments_array = argument[2];        
+    } 
+
+    for (var i = 0; i < _length; i++) {
+        _array[@ i] = script_execute(_script_id, _array[i], _script_arguments_array);
     }
 
-    return argument0;
+    return _array;
 }
 
 
@@ -500,9 +510,20 @@
 /// @description Copies the array and performs the script on each element of the copied array. Note - returns a new array. MUST be assigned to be any use.
 
 {
-    var _new_array = array_copy_shallow(argument0);   
-    for (var i = 0; i < array_length_1d(argument0); i++) {
-        _new_array[i] = script_execute(argument1, argument0[i], argument2);
+    
+    var _array, _script_id, _script_arguments_array, _length, _new_array;
+    _array = argument[0];
+    _script_id = argument[1];
+    _script_arguments_array = [];
+    _length = array_length_1d(_array);
+    
+    if (argument_count == 3) {
+        _script_arguments_array = argument[2];        
+    } 
+    
+    _new_array = array_copy_shallow(_array);   
+    for (var i = 0; i < _length; i++) {
+        _new_array[i] = script_execute(_script_id, _array[i], _script_arguments_array);
     }
 
     return _new_array;   

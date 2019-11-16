@@ -170,12 +170,23 @@ assert(array_equals(["Hello World"], array), "Arrays arn't equal");
 
 #region ///array_find_index test
 array = [0, 1, "Hello World", 2, 3, 4, 5];
+assert_equal(array_find_index(array, 1), 1);
 assert_equal(array_find_index(array, "Hello World"), 2);
 assert_equal(array_find_index(array, "Goodbye"), -1);
 
 
 array = [];
 assert_equal(array_find_index(array, "Goodbye"), -1);
+#endregion
+
+#region ///array_find_index_last test
+array = [0, 1, "Hello World", 1, 3, 4, 5];
+assert_equal(array_find_index_last(array, 1), 3);
+assert_equal(array_find_index_last(array, "Goodbye"), -1);
+
+
+array = [];
+assert_equal(array_find_index_last(array, "Goodbye"), -1);
 #endregion
 
 #region ///array_find_index_all test
@@ -229,6 +240,7 @@ array = [0, 1, 2, [0, 1, 2, 3, 4, 5], 3, [[]], 4, 5];
 assert(array_equals([0, 1, 2, 0, 1, 2, 3, 4, 5, 3, 4, 5], array_flatten(array)), "Arrays arn't equal"); 
 #endregion
 
+
 #region //array_sort test
 array = [0, 4, 5, 1, 4, 5, -4];
 assert(array_equals([-4, 0, 1, 4, 4, 5, 5], array_sort(array, sort_ascending)), "Arrays arn't equal"); 
@@ -242,6 +254,17 @@ assert(array_equals(["a", "b", "C", "Goodbye", "Hello World", 1], array_sort(arr
 //not sure how to test
 #endregion
 
+#region //array_reverse
+array = [0, 1, 2, 3];
+assert(array_equals([3, 2, 1, 0], array_reverse(array)), "Arrays arn't equal");
+
+array = [0, 1, "Hello World", 2, 3];
+assert(array_equals([3, 2, "Hello World", 1, 0], array_reverse(array)), "Arrays arn't equal"); 
+
+array = [];
+assert(array_equals([], array_reverse(array)), "Arrays arn't equal"); 
+#endregion
+
 #region ///array_filter test
 array = [0, 1, "Hello World"];
 assert(array_equals([0], array_filter(array, filter_is_even_safe)), "Arrays arn't equal"); 
@@ -251,13 +274,13 @@ assert(array_equals(["Hello World"], array_filter(array, filter_is_string_safe))
 
 #region ///array_for_each test
 array = [0, 1, 2];
-assert(array_equals([5, 6, 7], array_for_each(array, add_five_test, [])), "Arrays arn't equal"); 
+assert(array_equals([5, 6, 7], array_for_each(array, add_five_test)), "Arrays arn't equal"); 
 assert(array_equals([6, 7, 8], array_for_each(array, add_n_test, [1])), "Arrays arn't equal"); 
 #endregion
 
 #region ///array_for_each_copy test
 array = [0, 1, 2];
-map_1 = array_for_each_copy(array, add_five_test, []);
+map_1 = array_for_each_copy(array, add_five_test);
 map_2 = array_for_each_copy(array, add_n_test, [1])
 assert(array_equals([5, 6, 7], map_1), "Arrays arn't equal"); 
 assert(array_equals([1, 2, 3], map_2), "Arrays arn't equal"); 

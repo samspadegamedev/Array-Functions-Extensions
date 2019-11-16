@@ -9,7 +9,7 @@
 //rename the arguments for ease of use
 var _value, _scrit_arguments_array;
 _value = argument0;
-_scrit_arguments_array = argument1;
+_scrit_arguments_array = [];
 
 //do something to the array here
 
